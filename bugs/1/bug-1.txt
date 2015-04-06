@@ -1,0 +1,57 @@
+# BUG-#1
+
+## BUG描述
+gedit打开singularity后没有close，导致cursor dentry "." 没有被释放。
+
+[17491.931516] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.931523] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff880188642cc0>
+..
+[17515.428679] BUG: Dentry ffff880188642cc0{i=0,n=.}  still in use (1) [unmount of ofs ofs]
+[17515.428681] ------------[ cut here ]------------
+[17515.428688] WARNING: CPU: 3 PID: 20988 at /build/buildd/linux-3.19.0/fs/dcache.c:1289 umount_check+0x7c/0x90()
+[17515.428689] Modules linked in: ofstest(OE-) ofs(OE) binfmt_misc rfcomm bnep nls_iso8859_1 mmc_block rtsx_usb_ms memstick hid_sensor_gyro_3d hid_sensor_accel_3d hid_sensor_als hid_sensor_magn_3d hid_sensor_rotation hid_sensor_incl_3d hid_sensor_trigger industrialio_triggered_buffer kfifo_buf msi_wmi snd_hda_codec_hdmi industrialio joydev hid_sensor_iio_common snd_hda_codec_realtek ses sparse_keymap snd_hda_codec_generic enclosure arc4 intel_rapl iosf_mbi snd_hda_intel x86_pkg_temp_thermal intel_powerclamp coretemp iwldvm kvm_intel snd_hda_controller snd_hda_codec mac80211 snd_hwdep kvm iwlwifi crct10dif_pclmul snd_pcm crc32_pclmul ghash_clmulni_intel cfg80211 aesni_intel aes_x86_64 lrw gf128mul glue_helper ablk_helper cryptd snd_seq_midi snd_seq_midi_event snd_rawmidi serio_raw btusb snd_seq hid_sensor_hub
+[17515.428736]  lpc_ich bluetooth snd_seq_device snd_timer uvcvideo snd videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common hid_multitouch shpchp videodev soundcore hid_generic media mei_me mei i915 wmi drm_kms_helper video drm mac_hid i2c_algo_bit nfsd auth_rpcgss nfs_acl lockd grace parport_pc sunrpc ppdev lp parport autofs4 rtsx_usb_sdmmc rtsx_usb btrfs xor usbhid hid uas usb_storage raid6_pq ahci libahci r8169 mii osio(OE) exfat(OE) [last unloaded: ofs]
+[17515.428776] CPU: 3 PID: 20988 Comm: rmmod Tainted: G    B   W  OE  3.19.0-11-generic #11-Ubuntu
+[17515.428779] Hardware name: Micro-Star International Co., Ltd. Slidebook S20 0M/MS-1161, BIOS E1161IMS.50B 07/11/2013
+[17515.428782]  ffffffff81ab7cd8 ffff880193c47c88 ffffffff817c15b5 0000000000000007
+[17515.428786]  0000000000000000 ffff880193c47cc8 ffffffff8107595a ffff880193c47cf0
+[17515.428789]  ffff880188642cc0 ffff880188642d50 ffff880188642d18 ffff8801e3dd6520
+[17515.428793] Call Trace:
+[17515.428800]  [<ffffffff817c15b5>] dump_stack+0x45/0x57
+[17515.428805]  [<ffffffff8107595a>] warn_slowpath_common+0x8a/0xc0
+[17515.428808]  [<ffffffff81075a4a>] warn_slowpath_null+0x1a/0x20
+[17515.428813]  [<ffffffff8120aaac>] umount_check+0x7c/0x90
+[17515.428817]  [<ffffffff8120ab70>] ? prepend.constprop.28+0x30/0x30
+[17515.428821]  [<ffffffff8120b75d>] d_walk+0xdd/0x330
+[17515.428824]  [<ffffffff8120aa30>] ? dentry_free+0xb0/0xb0
+[17515.428829]  [<ffffffff8120beda>] do_one_tree+0x2a/0x50
+[17515.428832]  [<ffffffff8120d35f>] shrink_dcache_for_umount+0x2f/0x90
+[17515.428837]  [<ffffffff811f55b5>] generic_shutdown_super+0x25/0x100
+[17515.428841]  [<ffffffff811f5989>] kill_litter_super+0x29/0x40
+[17515.428847]  [<ffffffffc0bf404f>] ofs_kill_sb+0x4f/0x60 [ofs]
+[17515.428851]  [<ffffffff811f5d09>] deactivate_locked_super+0x49/0x60
+[17515.428854]  [<ffffffff811f615c>] deactivate_super+0x6c/0x80
+[17515.428858]  [<ffffffff81213f53>] cleanup_mnt+0x43/0xa0
+[17515.428862]  [<ffffffff812146ad>] mntput_no_expire+0x13d/0x150
+[17515.428866]  [<ffffffff812146e4>] mntput+0x24/0x40
+[17515.428869]  [<ffffffff81214927>] kern_unmount+0x37/0x40
+[17515.428875]  [<ffffffffc0bf52b8>] ofs_unregister+0x98/0x130 [ofs]
+[17515.428879]  [<ffffffffc07e104a>] ofs_test_exit+0x4a/0x1000 [ofstest]
+[17515.428884]  [<ffffffff810f7518>] SyS_delete_module+0x1d8/0x230
+[17515.428889]  [<ffffffff81014ff7>] ? do_notify_resume+0x97/0xb0
+[17515.428894]  [<ffffffff817c896f>] ? int_signal+0x12/0x17
+[17515.428898]  [<ffffffff817c86cd>] system_call_fastpath+0x16/0x1b
+[17515.428901] ---[ end trace aa377aa8b38f7b85 ]---
+[17515.428909] [OFS DBG](tgid:20988) <ofs_sops_put_super> sb<ffff880213706000>;
+[17515.428911] VFS: Busy inodes after unmount of ofs. Self-destruct in 5 seconds.  Have a nice day...
+[17515.440702] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e24768>;
+[17515.456644] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e253c0>;
+[17515.456656] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff88009c620278>;
+[17515.456661] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e25148>;
+[17515.456665] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e249e0>;
+
+## 解决方法
+TODO
+
+## 状态
+OPEN

@@ -1,0 +1,28 @@
+#! /bin/sh
+# @brief To setup the building environment of ofs
+# @author Octagram Sun <octagram@qq.com>
+# @version 0.1.0
+# @date 2015
+# @copyright Octagram Sun <octagram@qq.com>
+#
+# @note
+# Shell script to build ofs kernel module
+#
+# This file is part of ofs, as available from
+# * https://gitcafe.com/octagram/ofs
+# * https://github.com/octagram-xuanwu/ofs
+# This file is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License (GPL) as published by the Free
+# Software Foundation, in version 2 as it comes in the "LICENSE" file of the
+# ofs distribution. The ofs is distributed in the hope that it will
+# be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+#
+
+if [ x"$0" = x"bash" ] ; then
+	SRCFILE_PATH=${BASH_SOURCE[0]}
+else
+	SRCFILE_PATH=$0
+fi
+OFS_TOPDIR="$(pwd)/$(dirname ${SRCFILE_PATH})"
+OFS_SCRIPT_DIR=${OFS_TOPDIR}/scripts
+export PATH=${OFS_SCRIPT_DIR}:${PATH}

@@ -1,0 +1,618 @@
+[17332.216620] [OFS DBG](tgid:20083) <ofs_init> sizeof(inode):560; sizeof(ofs_inode):624
+[17332.216624] [OFS INF](tgid:20083) <ofs_init> register filesystem: ofs.
+[17343.853096] [OFS DBG](tgid:20139) <ofs_register> magic="ofstest";
+[17343.853104] [OFS DBG](tgid:20139) <ofs_mount> dev_name=ofs; data=ofstest; kernmount;
+[17343.853112] [OFS DBG](tgid:20139) <ofs_fill_superblock> *1* sb<ffff880213706000>; magic=ofstest; mo={->mode=0775, ->uid=0, ->gid=0, ->is_magic=1,};
+[17343.853114] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<          (null)>; mode=040775; dev=0;
+[17343.853120] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e24000>->inode<ffff8800b8e24000>;
+[17343.853123] [OFS DBG](tgid:20139) <ofs_fill_superblock> *2* sb<ffff880213706000>; sb->s_fs_info<ffff880076b52b00>; rooti<ffff8800b8e24000>; rootd<ffff8801e9020840>;
+[17343.853147] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e24000>; dentry<ffff8800a2ad7900>=="dir1"; flags==0x0;
+[17343.853150] [OFS DBG](tgid:20139) <ofs_dir_iops_mkdir> iparent<ffff8800b8e24000>; newd<ffff8800a2ad7900>=="dir1";
+[17343.853152] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e24000>; mode=040775; dev=0;
+[17343.853153] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e24278>->inode<ffff8800b8e24278>;
+[17343.853157] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e24278>; dentry<ffff88009c950300>=="dir2"; flags==0x0;
+[17343.853158] [OFS DBG](tgid:20139) <ofs_dir_iops_mkdir> iparent<ffff8800b8e24278>; newd<ffff88009c950300>=="dir2";
+[17343.853160] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e24278>; mode=040775; dev=0;
+[17343.853161] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e244f0>->inode<ffff8800b8e244f0>;
+[17343.853165] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e24000>; dentry<ffff8800b96f89c0>=="sym1"; flags==0x0;
+[17343.853167] [OFS DBG](tgid:20139) <ofs_symlink_magic_hlp> symlink target:"dir1/dir2"
+[17343.853169] [OFS DBG](tgid:20139) <ofs_dir_iops_symlink> iparent<ffff8800b8e24000>; newd<ffff8800b96f89c0>=="sym1"; symname=dir1/dir2;
+[17343.853170] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e24000>; mode=0120777; dev=0;
+[17343.853172] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e24768>->inode<ffff8800b8e24768>;
+[17343.853178] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff880077d26c00>=="dir3"; flags==0x0;
+[17343.853179] [OFS DBG](tgid:20139) <ofs_dir_iops_mkdir> iparent<ffff8800b8e244f0>; newd<ffff880077d26c00>=="dir3";
+[17343.853181] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e244f0>; mode=040775; dev=0;
+[17343.853182] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e249e0>->inode<ffff8800b8e249e0>;
+[17343.853185] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e24278>; dentry<ffff880077d26600>=="sym2"; flags==0x0;
+[17343.853186] [OFS DBG](tgid:20139) <ofs_symlink_magic_hlp> symlink target:"../dir1/dir2/dir3"
+[17343.853188] [OFS DBG](tgid:20139) <ofs_dir_iops_symlink> iparent<ffff8800b8e24278>; newd<ffff880077d26600>=="sym2"; symname=../dir1/dir2/dir3;
+[17343.853190] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e24278>; mode=0120777; dev=0;
+[17343.853191] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e24c58>->inode<ffff8800b8e24c58>;
+[17343.853195] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff8801e3dd6480>=="singularity"; flags==0x0;
+[17343.853198] [OFS DBG](tgid:20139) <ofs_dir_iops_create> iparent<ffff8800b8e244f0>; newd<ffff8801e3dd6480>=="singularity"; mode=0100777; excl=true;
+[17343.853199] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e244f0>; mode=0100777; dev=0;
+[17343.853201] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e24ed0>->inode<ffff8800b8e24ed0>;
+[17343.853204] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e249e0>; dentry<ffff8801e3dd6840>=="regfile"; flags==0x0;
+[17343.853206] [OFS DBG](tgid:20139) <ofs_dir_iops_create> iparent<ffff8800b8e249e0>; newd<ffff8801e3dd6840>=="regfile"; mode=0100775; excl=true;
+[17343.853207] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e249e0>; mode=0100775; dev=0;
+[17343.853208] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e25148>->inode<ffff8800b8e25148>;
+[17343.853211] [OFS DBG](tgid:20139) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff88007c1f4cc0>=="dir4"; flags==0x0;
+[17343.853213] [OFS DBG](tgid:20139) <ofs_dir_iops_mkdir> iparent<ffff8800b8e244f0>; newd<ffff88007c1f4cc0>=="dir4";
+[17343.853214] [OFS DBG](tgid:20139) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e244f0>; mode=040775; dev=0;
+[17343.853216] [OFS DBG](tgid:20139) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff8800b8e253c0>->inode<ffff8800b8e253c0>;
+[17400.751247] [OFS DBG](tgid:20418) <ofs_mount> dev_name=ofstest; data=uid=1000,magic; usermount;
+[17400.751253] [OFS DBG](tgid:20418) <ofs_parse_options> *1* data=uid=1000,magic; mo={->mode=0775, ->uid=0, ->gid=0, ->is_magic=0,};
+[17400.751259] [OFS DBG](tgid:20418) <ofs_parse_options> *2* mode=0775,uid=1000,gid=0,magic
+[17400.755563] [OFS DBG](tgid:1946) <ofs_dir_iops_lookup> iparent<ffff8800b8e24000>; dentry<ffff8800a2897cc0>==".Trash"; flags==0x0;
+[17400.755568] [OFS DBG](tgid:1946) <ofs_dops_delete_dentry> dentry<ffff8800a2897cc0>
+[17400.755602] [OFS DBG](tgid:1946) <ofs_dir_iops_lookup> iparent<ffff8800b8e24000>; dentry<ffff8801ea3bb6c0>==".Trash-1000"; flags==0x0;
+[17400.755605] [OFS DBG](tgid:1946) <ofs_dops_delete_dentry> dentry<ffff8801ea3bb6c0>
+[17409.231447] [OFS DBG](tgid:20452) <ofs_dir_fops_open> oi<ffff8800b8e24000>; file<ffff8801e5f5d800>; dentry<ffff8801e9020840>=="/";
+[17409.231456] [OFS DBG](tgid:20452) <ofs_dir_fops_iterate> oi<ffff8800b8e24000>; file<ffff8801e5f5d800>; dentry<ffff8801e9020840>=="/"; ctx<ffff880193c5bf18>;
+[17409.231473] [OFS DBG](tgid:20452) <ofs_dir_fops_iterate> oi<ffff8800b8e24000>; file<ffff8801e5f5d800>; dentry<ffff8801e9020840>=="/"; ctx<ffff880193c5bf18>;
+[17409.231476] [OFS DBG](tgid:20452) <ofs_dir_fops_release> oi<ffff8800b8e24000>; file<ffff8801e5f5d800>; dentry<ffff8801e9020840>=="/";
+[17411.150553] [OFS DBG](tgid:20462) <ofs_dir_fops_open> oi<ffff8800b8e24278>; file<ffff88018df55400>; dentry<ffff8800a2ad7900>=="dir1";
+[17411.150561] [OFS DBG](tgid:20462) <ofs_dir_fops_iterate> oi<ffff8800b8e24278>; file<ffff88018df55400>; dentry<ffff8800a2ad7900>=="dir1"; ctx<ffff880190a4bf18>;
+[17411.150577] [OFS DBG](tgid:20462) <ofs_dir_fops_iterate> oi<ffff8800b8e24278>; file<ffff88018df55400>; dentry<ffff8800a2ad7900>=="dir1"; ctx<ffff880190a4bf18>;
+[17411.150581] [OFS DBG](tgid:20462) <ofs_dir_fops_release> oi<ffff8800b8e24278>; file<ffff88018df55400>; dentry<ffff8800a2ad7900>=="dir1";
+[17413.226204] [OFS DBG](tgid:20471) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801a7aed100>; dentry<ffff88009c950300>=="dir2";
+[17413.226236] [OFS DBG](tgid:20471) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7aed100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190a4bf18>;
+[17413.226363] [OFS DBG](tgid:20471) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7aed100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190a4bf18>;
+[17413.226379] [OFS DBG](tgid:20471) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801a7aed100>; dentry<ffff88009c950300>=="dir2";
+[17428.045448] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880075499d00>; dentry<ffff88009c950300>=="dir2";
+[17428.045509] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075499d00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.045529] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075499d00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.045567] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880075499d00>; dentry<ffff88009c950300>=="dir2";
+[17428.045862] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880075499200>; dentry<ffff88009c950300>=="dir2";
+[17428.045910] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075499200>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.045925] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075499200>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.046039] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880075499200>; dentry<ffff88009c950300>=="dir2";
+[17428.046492] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880075499100>; dentry<ffff88009c950300>=="dir2";
+[17428.046563] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075499100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.046588] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075499100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.046630] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880075499100>; dentry<ffff88009c950300>=="dir2";
+[17428.051636] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801f6b58a00>; dentry<ffff88009c950300>=="dir2";
+[17428.051714] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801f6b58a00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.051726] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801f6b58a00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.051766] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801f6b58a00>; dentry<ffff88009c950300>=="dir2";
+[17428.052192] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801f6b58600>; dentry<ffff88009c950300>=="dir2";
+[17428.052213] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801f6b58600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.052218] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801f6b58600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.052229] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801f6b58600>; dentry<ffff88009c950300>=="dir2";
+[17428.054610] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801a7aacc00>; dentry<ffff88009c950300>=="dir2";
+[17428.054629] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7aacc00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.054635] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7aacc00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.054646] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801a7aacc00>; dentry<ffff88009c950300>=="dir2";
+[17428.054746] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801a7aac900>; dentry<ffff88009c950300>=="dir2";
+[17428.054762] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7aac900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.054767] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7aac900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17428.054777] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801a7aac900>; dentry<ffff88009c950300>=="dir2";
+[17428.056579] [OFS DBG](tgid:20538) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88009fb7e800>; dentry<ffff88009c950300>=="dir2";
+[17428.056602] [OFS DBG](tgid:20538) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88009fb7e800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190bd3f18>;
+[17428.056610] [OFS DBG](tgid:20538) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88009fb7e800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190bd3f18>;
+[17428.056621] [OFS DBG](tgid:20538) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88009fb7e800>; dentry<ffff88009c950300>=="dir2";
+[17428.057263] [OFS DBG](tgid:20539) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018ffa1c00>; dentry<ffff88009c950300>=="dir2";
+[17428.057286] [OFS DBG](tgid:20539) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018ffa1c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b27f18>;
+[17428.057294] [OFS DBG](tgid:20539) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018ffa1c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b27f18>;
+[17428.057304] [OFS DBG](tgid:20539) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018ffa1c00>; dentry<ffff88009c950300>=="dir2";
+[17433.615880] [OFS DBG](tgid:20565) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff88008ac6b480>=="sin"; flags==0x1;
+[17433.615884] [OFS DBG](tgid:20565) <ofs_dops_delete_dentry> dentry<ffff88008ac6b480>
+[17433.615892] [OFS DBG](tgid:20565) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff8801993fa6c0>=="sin"; flags==0x600;
+[17433.615895] [OFS DBG](tgid:20565) <ofs_dir_iops_link> oldd<ffff8801e3dd6480>=="singularity"; iparent<ffff8800b8e244f0>; newd<ffff8801993fa6c0>=="sin";
+[17440.984478] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801a64eb900>; dentry<ffff88009c950300>=="dir2";
+[17440.984554] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a64eb900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17440.984579] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a64eb900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17440.984622] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801a64eb900>; dentry<ffff88009c950300>=="dir2";
+[17440.984938] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801a64ebd00>; dentry<ffff88009c950300>=="dir2";
+[17440.984988] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a64ebd00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17440.985006] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a64ebd00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17440.985035] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801a64ebd00>; dentry<ffff88009c950300>=="dir2";
+[17440.990227] [OFS DBG](tgid:20590) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018b692600>; dentry<ffff88009c950300>=="dir2";
+[17440.990297] [OFS DBG](tgid:20590) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018b692600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88019097ff18>;
+[17440.990319] [OFS DBG](tgid:20590) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018b692600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88019097ff18>;
+[17440.990350] [OFS DBG](tgid:20590) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018b692600>; dentry<ffff88009c950300>=="dir2";
+[17440.992106] [OFS DBG](tgid:20591) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880075df3200>; dentry<ffff88009c950300>=="dir2";
+[17440.992171] [OFS DBG](tgid:20591) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075df3200>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190bbbf18>;
+[17440.992193] [OFS DBG](tgid:20591) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880075df3200>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190bbbf18>;
+[17440.992224] [OFS DBG](tgid:20591) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880075df3200>; dentry<ffff88009c950300>=="dir2";
+[17441.486570] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff880088ae6500>; dentry<ffff8801993fa6c0>=="sin";
+[17441.505689] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8801fa73c500>; dentry<ffff8801993fa6c0>=="sin";
+[17441.505703] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801fa73c500>; dentry<ffff8801993fa6c0>=="sin"; buf<00007f2aebdf6980>; len==4096; pos<ffff880190b13f50>==0;
+[17441.505710] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff8801fa73c500>; dentry<ffff8801993fa6c0>=="sin"; buf<00007f2aebdf6980>; len==4096; pos<ffff880190b13f50>==0;
+[17441.505717] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b13d58>
+[17441.505723] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b13d58>
+[17441.505862] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8801fa73c500>; dentry<ffff8801993fa6c0>=="sin";
+[17441.506869] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff880088ae6500>; dentry<ffff8801993fa6c0>=="sin"; buf<0000000001dc9468>; len==8192; pos<ffff880190b13f50>==0;
+[17441.506876] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff880088ae6500>; dentry<ffff8801993fa6c0>=="sin"; buf<0000000001dc9468>; len==8192; pos<ffff880190b13f50>==0;
+[17441.506882] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b13d58>
+[17441.506886] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b13d58>
+[17441.506966] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff880088ae6500>; dentry<ffff8801993fa6c0>=="sin";
+[17441.572463] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff880199c9cb00>; dentry<ffff8801993fa6c0>=="sin";
+[17441.572490] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff880199c9cb00>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474a9a0>; len==4096; pos<ffff880189983f50>==0;
+[17441.572499] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff880199c9cb00>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474a9a0>; len==4096; pos<ffff880189983f50>==0;
+[17441.572505] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17441.572510] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17441.572528] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff880199c9cb00>; dentry<ffff8801993fa6c0>=="sin";
+[17441.701929] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff880199c9ce00>; dentry<ffff8801993fa6c0>=="sin";
+[17441.701953] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff880199c9ce00>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474b740>; len==4096; pos<ffff880189983f50>==0;
+[17441.701960] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff880199c9ce00>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474b740>; len==4096; pos<ffff880189983f50>==0;
+[17441.701966] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17441.701971] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17441.702037] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff880199c9ce00>; dentry<ffff8801993fa6c0>=="sin";
+[17444.315341] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800c2467900>; dentry<ffff8801993fa6c0>=="sin";
+[17444.315350] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800c2467900>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe34748df0>; len==4096; pos<ffff880189983f50>==0;
+[17444.315354] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff8800c2467900>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe34748df0>; len==4096; pos<ffff880189983f50>==0;
+[17444.315357] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17444.315360] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17444.315366] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800c2467900>; dentry<ffff8801993fa6c0>=="sin";
+[17446.690196] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800a0f0ac00>; dentry<ffff8801993fa6c0>=="sin";
+[17446.703728] [OFS DBG](tgid:30372) <ofs_singularity_fops_write> oi<ffff8800b8e24ed0>, file<ffff8800a0f0ac00>; dentry<ffff8801993fa6c0>=="sin"; buf<00000000027cc668>; len==10; pos<ffff880190b13f50>==0;
+[17446.703735] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_write> file<ffff8800a0f0ac00>; dentry<ffff8801993fa6c0>=="sin"; buf<00000000027cc668>; len==10; pos<ffff880190b13f50>==0;
+[17446.703738] [OFS DBG](tgid:30372) <ofs_singularity_fops_write_iter> oi<ffff8800b8e24ed0>; iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>="sin"; iter<ffff880190b13d58>
+[17446.703741] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_write_iter> iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>="sin"; iter<ffff880190b13d58>
+[17446.703986] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800a0f0ac00>; dentry<ffff8801993fa6c0>=="sin";
+[17446.704265] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8801e97ce700>; dentry<ffff8801993fa6c0>=="sin";
+[17446.704277] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801e97ce700>; dentry<ffff8801993fa6c0>=="sin"; buf<00007f2aebdf6980>; len==4096; pos<ffff880190b13f50>==0;
+[17446.704282] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff8801e97ce700>; dentry<ffff8801993fa6c0>=="sin"; buf<00007f2aebdf6980>; len==4096; pos<ffff880190b13f50>==0;
+[17446.704285] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b13d58>
+[17446.704288] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880190b13d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b13d58>
+[17446.704305] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8801e97ce700>; dentry<ffff8801993fa6c0>=="sin";
+[17446.711396] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff88018df55b00>; dentry<ffff8801993fa6c0>=="sin";
+[17446.711421] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff88018df55b00>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474aa30>; len==4096; pos<ffff880189983f50>==0;
+[17446.711431] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff88018df55b00>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474aa30>; len==4096; pos<ffff880189983f50>==0;
+[17446.711439] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17446.711447] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17446.711466] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff88018df55b00>; dentry<ffff8801993fa6c0>=="sin";
+[17446.717597] [OFS DBG](tgid:30372) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff88018c417300>; dentry<ffff8801993fa6c0>=="sin";
+[17446.717620] [OFS DBG](tgid:30372) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff88018c417300>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474a9f0>; len==4096; pos<ffff880189983f50>==0;
+[17446.717633] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read> file<ffff88018c417300>; dentry<ffff8801993fa6c0>=="sin"; buf<00007ffe3474a9f0>; len==4096; pos<ffff880189983f50>==0;
+[17446.717643] [OFS DBG](tgid:30372) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17446.717651] [OFS DBG](tgid:30372) <ofs_singularity_ofsops_read_iter> iocb<ffff880189983d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880189983d58>
+[17446.717667] [OFS DBG](tgid:30372) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff88018c417300>; dentry<ffff8801993fa6c0>=="sin";
+[17460.649397] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801e9de3a00>; dentry<ffff88009c950300>=="dir2";
+[17460.649476] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e9de3a00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17460.649498] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e9de3a00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17460.649541] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801e9de3a00>; dentry<ffff88009c950300>=="dir2";
+[17460.649855] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801e9de3800>; dentry<ffff88009c950300>=="dir2";
+[17460.649905] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e9de3800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17460.649922] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e9de3800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17460.649952] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801e9de3800>; dentry<ffff88009c950300>=="dir2";
+[17460.655724] [OFS DBG](tgid:20679) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801fa6cad00>; dentry<ffff88009c950300>=="dir2";
+[17460.655794] [OFS DBG](tgid:20679) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801fa6cad00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17460.655817] [OFS DBG](tgid:20679) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801fa6cad00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17460.655849] [OFS DBG](tgid:20679) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801fa6cad00>; dentry<ffff88009c950300>=="dir2";
+[17460.657855] [OFS DBG](tgid:20680) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800b9224800>; dentry<ffff88009c950300>=="dir2";
+[17460.657922] [OFS DBG](tgid:20680) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800b9224800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fd0ff18>;
+[17460.657944] [OFS DBG](tgid:20680) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800b9224800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fd0ff18>;
+[17460.657975] [OFS DBG](tgid:20680) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800b9224800>; dentry<ffff88009c950300>=="dir2";
+[17461.622581] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800d8c40f00>; dentry<ffff88009c950300>=="dir2";
+[17461.622655] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d8c40f00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17461.622677] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d8c40f00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17461.622721] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800d8c40f00>; dentry<ffff88009c950300>=="dir2";
+[17461.623067] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800d8c40200>; dentry<ffff88009c950300>=="dir2";
+[17461.623117] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d8c40200>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17461.623133] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d8c40200>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17461.623163] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800d8c40200>; dentry<ffff88009c950300>=="dir2";
+[17461.628030] [OFS DBG](tgid:20689) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880084003100>; dentry<ffff88009c950300>=="dir2";
+[17461.628081] [OFS DBG](tgid:20689) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880084003100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880074b8ff18>;
+[17461.628091] [OFS DBG](tgid:20689) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880084003100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880074b8ff18>;
+[17461.628114] [OFS DBG](tgid:20689) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880084003100>; dentry<ffff88009c950300>=="dir2";
+[17461.629879] [OFS DBG](tgid:20690) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880199c31c00>; dentry<ffff88009c950300>=="dir2";
+[17461.629947] [OFS DBG](tgid:20690) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880199c31c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc57f18>;
+[17461.629961] [OFS DBG](tgid:20690) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880199c31c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc57f18>;
+[17461.629993] [OFS DBG](tgid:20690) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880199c31c00>; dentry<ffff88009c950300>=="dir2";
+[17462.045633] [OFS DBG](tgid:20691) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8801e97ce600>; dentry<ffff8801e3dd6480>=="singularity";
+[17462.045637] [OFS DBG](tgid:20691) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801893f6000>
+[17462.045647] [OFS DBG](tgid:20691) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801e97ce600>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f7017448000>; len==131072; pos<ffff88007fc57f50>==0;
+[17462.045650] [OFS DBG](tgid:20691) <ofs_singularity_ofsops_read> file<ffff8801e97ce600>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f7017448000>; len==131072; pos<ffff88007fc57f50>==0;
+[17462.045651] [OFS DBG](tgid:20691) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17462.045653] [OFS DBG](tgid:20691) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17462.045679] [OFS DBG](tgid:20691) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801e97ce600>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f7017448000>; len==131072; pos<ffff88007fc57f50>==10;
+[17462.045682] [OFS DBG](tgid:20691) <ofs_singularity_ofsops_read> file<ffff8801e97ce600>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f7017448000>; len==131072; pos<ffff88007fc57f50>==10;
+[17462.045685] [OFS DBG](tgid:20691) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17462.045687] [OFS DBG](tgid:20691) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17462.045699] [OFS DBG](tgid:20691) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8801e97ce600>; dentry<ffff8801e3dd6480>=="singularity";
+[17462.045701] [OFS DBG](tgid:20691) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801893f6000>
+[17466.208486] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800a0db0900>; dentry<ffff88009c950300>=="dir2";
+[17466.208565] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.208589] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.208632] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800a0db0900>; dentry<ffff88009c950300>=="dir2";
+[17466.208968] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2";
+[17466.209020] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.209036] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.209066] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2";
+[17466.209355] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800a0db0000>; dentry<ffff88009c950300>=="dir2";
+[17466.209402] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0000>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.209417] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0000>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.209446] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800a0db0000>; dentry<ffff88009c950300>=="dir2";
+[17466.209734] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800a0db0c00>; dentry<ffff88009c950300>=="dir2";
+[17466.209781] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.209796] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17466.209823] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800a0db0c00>; dentry<ffff88009c950300>=="dir2";
+[17466.215676] [OFS DBG](tgid:20708) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801e975a600>; dentry<ffff88009c950300>=="dir2";
+[17466.215743] [OFS DBG](tgid:20708) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e975a600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17466.215766] [OFS DBG](tgid:20708) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e975a600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17466.215797] [OFS DBG](tgid:20708) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801e975a600>; dentry<ffff88009c950300>=="dir2";
+[17466.217632] [OFS DBG](tgid:20709) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800be570000>; dentry<ffff88009c950300>=="dir2";
+[17466.217692] [OFS DBG](tgid:20709) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800be570000>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880074b8ff18>;
+[17466.217711] [OFS DBG](tgid:20709) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800be570000>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880074b8ff18>;
+[17466.217737] [OFS DBG](tgid:20709) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800be570000>; dentry<ffff88009c950300>=="dir2";
+[17467.117334] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800840e7300>; dentry<ffff88009c950300>=="dir2";
+[17467.117412] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7300>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.117435] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7300>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.117478] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800840e7300>; dentry<ffff88009c950300>=="dir2";
+[17467.117787] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800840e7b00>; dentry<ffff88009c950300>=="dir2";
+[17467.117838] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7b00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.117854] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7b00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.117884] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800840e7b00>; dentry<ffff88009c950300>=="dir2";
+[17467.118170] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800840e7600>; dentry<ffff88009c950300>=="dir2";
+[17467.118219] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.118234] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.118262] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800840e7600>; dentry<ffff88009c950300>=="dir2";
+[17467.118556] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800840e7a00>; dentry<ffff88009c950300>=="dir2";
+[17467.118676] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7a00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.118716] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800840e7a00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17467.118731] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800840e7a00>; dentry<ffff88009c950300>=="dir2";
+[17467.124036] [OFS DBG](tgid:20710) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88007577f800>; dentry<ffff88009c950300>=="dir2";
+[17467.124057] [OFS DBG](tgid:20710) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88007577f800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880074b8ff18>;
+[17467.124062] [OFS DBG](tgid:20710) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88007577f800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880074b8ff18>;
+[17467.124071] [OFS DBG](tgid:20710) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88007577f800>; dentry<ffff88009c950300>=="dir2";
+[17467.125523] [OFS DBG](tgid:20711) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800c2611600>; dentry<ffff88009c950300>=="dir2";
+[17467.125592] [OFS DBG](tgid:20711) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800c2611600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17467.125606] [OFS DBG](tgid:20711) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800c2611600>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17467.125635] [OFS DBG](tgid:20711) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800c2611600>; dentry<ffff88009c950300>=="dir2";
+[17469.195084] [OFS DBG](tgid:20296) <ofs_dir_iops_lookup> iparent<ffff8800b8e24ed0>; dentry<ffff880089afdb40>=="abc"; flags==0x301;
+[17469.195104] [OFS DBG](tgid:20296) <ofs_dir_iops_create> iparent<ffff8800b8e24ed0>; newd<ffff880089afdb40>=="abc"; mode=0100664; excl=false;
+[17469.195115] [OFS DBG](tgid:20296) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e24ed0>; mode=0100664; dev=0;
+[17469.195141] [OFS DBG](tgid:20296) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff88009c620000>->inode<ffff88009c620000>;
+[17469.195159] [OFS DBG](tgid:20296) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff8800b9224b00>; dentry<ffff880089afdb40>=="abc";
+[17469.195193] [OFS DBG](tgid:20296) <ofs_regfile_fops_write> oi<ffff88009c620000>, file<ffff8800b9224b00>; dentry<ffff880089afdb40>=="abc"; buf<0000000001c14408>; len==4; pos<ffff880190aeff50>==0;
+[17469.195199] [OFS DBG](tgid:20296) <ofs_regfile_fops_write_iter> oi<ffff88009c620000>; iocb<ffff880190aefdf0>; dentry<ffff880089afdb40>="abc"; iter<ffff880190aefdc8>
+[17469.195226] [OFS DBG](tgid:20296) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff8800b9224b00>; dentry<ffff880089afdb40>=="abc";
+[17472.148743] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800b9224e00>; dentry<ffff88009c950300>=="dir2";
+[17472.148827] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800b9224e00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.148849] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800b9224e00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.148900] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800b9224e00>; dentry<ffff88009c950300>=="dir2";
+[17472.149270] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800b9224100>; dentry<ffff88009c950300>=="dir2";
+[17472.149314] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800b9224100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.149328] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800b9224100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.149354] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800b9224100>; dentry<ffff88009c950300>=="dir2";
+[17472.154448] [OFS DBG](tgid:20736) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88008411b100>; dentry<ffff88009c950300>=="dir2";
+[17472.154521] [OFS DBG](tgid:20736) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88008411b100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc1ff18>;
+[17472.154544] [OFS DBG](tgid:20736) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88008411b100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc1ff18>;
+[17472.154581] [OFS DBG](tgid:20736) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88008411b100>; dentry<ffff88009c950300>=="dir2";
+[17472.156374] [OFS DBG](tgid:20737) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800d85b8800>; dentry<ffff88009c950300>=="dir2";
+[17472.156430] [OFS DBG](tgid:20737) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d85b8800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17472.156448] [OFS DBG](tgid:20737) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d85b8800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17472.156472] [OFS DBG](tgid:20737) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800d85b8800>; dentry<ffff88009c950300>=="dir2";
+[17472.858071] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880213b81800>; dentry<ffff88009c950300>=="dir2";
+[17472.858100] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880213b81800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.858108] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880213b81800>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.858125] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880213b81800>; dentry<ffff88009c950300>=="dir2";
+[17472.858232] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff880213b81c00>; dentry<ffff88009c950300>=="dir2";
+[17472.858249] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880213b81c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.858254] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff880213b81c00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17472.858265] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff880213b81c00>; dentry<ffff88009c950300>=="dir2";
+[17472.860013] [OFS DBG](tgid:20738) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88008411b400>; dentry<ffff88009c950300>=="dir2";
+[17472.860036] [OFS DBG](tgid:20738) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88008411b400>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17472.860041] [OFS DBG](tgid:20738) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88008411b400>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc73f18>;
+[17472.860052] [OFS DBG](tgid:20738) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88008411b400>; dentry<ffff88009c950300>=="dir2";
+[17472.860752] [OFS DBG](tgid:20739) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88009fb7eb00>; dentry<ffff88009c950300>=="dir2";
+[17472.860775] [OFS DBG](tgid:20739) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88009fb7eb00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc1ff18>;
+[17472.860779] [OFS DBG](tgid:20739) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88009fb7eb00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc1ff18>;
+[17472.860788] [OFS DBG](tgid:20739) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88009fb7eb00>; dentry<ffff88009c950300>=="dir2";
+[17475.353136] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff88018dfc7d00>; dentry<ffff880089afdb40>=="abc";
+[17475.360493] [OFS DBG](tgid:20748) <ofs_dir_iops_lookup> iparent<ffff8800b8e24000>; dentry<ffff8801caca1300>==".hidden"; flags==0x101;
+[17475.360512] [OFS DBG](tgid:20748) <ofs_dops_delete_dentry> dentry<ffff8801caca1300>
+[17475.360814] [OFS DBG](tgid:20748) <ofs_dir_iops_lookup> iparent<ffff8800b8e24278>; dentry<ffff8801caca1900>==".hidden"; flags==0x101;
+[17475.360825] [OFS DBG](tgid:20748) <ofs_dops_delete_dentry> dentry<ffff8801caca1900>
+[17475.361088] [OFS DBG](tgid:20748) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff8801caca1540>==".hidden"; flags==0x101;
+[17475.361098] [OFS DBG](tgid:20748) <ofs_dops_delete_dentry> dentry<ffff8801caca1540>
+[17475.361586] [OFS DBG](tgid:20748) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800d8c40900>; dentry<ffff8801e3dd6480>=="singularity";
+[17475.361596] [OFS DBG](tgid:20748) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801caca1600>
+[17475.361628] [OFS DBG](tgid:20748) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800d8c40900>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc26f0ac30>; len==4096; pos<ffff88007fc73f50>==0;
+[17475.361639] [OFS DBG](tgid:20748) <ofs_singularity_ofsops_read> file<ffff8800d8c40900>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc26f0ac30>; len==4096; pos<ffff88007fc73f50>==0;
+[17475.361650] [OFS DBG](tgid:20748) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc73d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc73d58>
+[17475.361658] [OFS DBG](tgid:20748) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc73d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc73d58>
+[17475.361677] [OFS DBG](tgid:20748) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800d8c40900>; dentry<ffff8801e3dd6480>=="singularity";
+[17475.361684] [OFS DBG](tgid:20748) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801caca1600>
+[17475.366783] [OFS DBG](tgid:20748) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800d8c40200>; dentry<ffff8801e3dd6480>=="singularity";
+[17475.366793] [OFS DBG](tgid:20748) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801caca1600>
+[17475.366806] [OFS DBG](tgid:20748) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800d8c40200>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc26f0a670>; len==4096; pos<ffff88007fc73f50>==0;
+[17475.366813] [OFS DBG](tgid:20748) <ofs_singularity_ofsops_read> file<ffff8800d8c40200>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc26f0a670>; len==4096; pos<ffff88007fc73f50>==0;
+[17475.366819] [OFS DBG](tgid:20748) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc73d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc73d58>
+[17475.366824] [OFS DBG](tgid:20748) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc73d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc73d58>
+[17475.366836] [OFS DBG](tgid:20748) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800d8c40200>; dentry<ffff8801e3dd6480>=="singularity";
+[17475.366840] [OFS DBG](tgid:20748) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801caca1600>
+[17475.371541] [OFS DBG](tgid:20748) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8801a64eb200>; dentry<ffff8801e3dd6480>=="singularity";
+[17475.371553] [OFS DBG](tgid:20748) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801b3629300>
+[17475.392275] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff88008a99c000>; dentry<ffff880089afdb40>=="abc";
+[17475.392299] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff88008a99c000>; dentry<ffff880089afdb40>=="abc"; buf<00007f6c61d46980>; len==4096; pos<ffff880075393f50>==0;
+[17475.392310] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff880075393df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff880075393dc8>
+[17475.392327] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff88008a99c000>; dentry<ffff880089afdb40>=="abc";
+[17475.392667] [OFS DBG](tgid:20748) <ofs_singularity_fops_iterate> oi<ffff8800b8e24ed0>; file<ffff8801a64eb200>; dentry<ffff8801e3dd6480>=="singularity"; ctx<ffff88007fcf3f18>;
+[17475.392678] [OFS DBG](tgid:20748) <ofs_singularity_fops_iterate> entry: magic dentry
+[17475.392697] [OFS DBG](tgid:20748) <ofs_singularity_fops_iterate> oi<ffff8800b8e24ed0>; file<ffff8801a64eb200>; dentry<ffff8801e3dd6480>=="singularity"; ctx<ffff88007fcf3f18>;
+[17475.392703] [OFS DBG](tgid:20748) <ofs_singularity_fops_iterate> entry: magic dentry
+[17475.392796] [OFS DBG](tgid:20748) <ofs_dir_iops_lookup> iparent<ffff8800b8e24ed0>; dentry<ffff8800b8f60000>==".hidden"; flags==0x101;
+[17475.392807] [OFS DBG](tgid:20748) <ofs_dops_delete_dentry> dentry<ffff8800b8f60000>
+[17475.392952] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff880189948400>; dentry<ffff880089afdb40>=="abc";
+[17475.392971] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff880189948400>; dentry<ffff880089afdb40>=="abc"; buf<00007f6c5563d960>; len==4096; pos<ffff88007fcf3f50>==0;
+[17475.392980] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff88007fcf3df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff88007fcf3dc8>
+[17475.392996] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff880189948400>; dentry<ffff880089afdb40>=="abc";
+[17475.393211] [OFS DBG](tgid:20748) <ofs_singularity_fops_iterate> oi<ffff8800b8e24ed0>; file<ffff8801a64eb200>; dentry<ffff8801e3dd6480>=="singularity"; ctx<ffff88007fcf3f18>;
+[17475.393218] [OFS DBG](tgid:20748) <ofs_singularity_fops_iterate> entry: magic dentry
+[17475.396098] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff88018dfc7d00>; dentry<ffff880089afdb40>=="abc"; buf<0000000000faf068>; len==8192; pos<ffff880075393f50>==0;
+[17475.396112] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff880075393df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff880075393dc8>
+[17475.397299] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff88018dfc7d00>; dentry<ffff880089afdb40>=="abc"; buf<0000000000faf068>; len==8192; pos<ffff88007fcf3f50>==4;
+[17475.397312] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff88007fcf3df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff88007fcf3dc8>
+[17475.397391] [OFS DBG](tgid:20748) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8801a64eb200>; dentry<ffff8801e3dd6480>=="singularity";
+[17475.397402] [OFS DBG](tgid:20748) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801b3629300>
+[17475.398683] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff88018dfc7d00>; dentry<ffff880089afdb40>=="abc";
+[17475.507444] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff8801a644b600>; dentry<ffff880089afdb40>=="abc";
+[17475.507456] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff8801a644b600>; dentry<ffff880089afdb40>=="abc"; buf<00007ffc26f0b680>; len==4096; pos<ffff88007fc73f50>==0;
+[17475.507461] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff88007fc73df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff88007fc73dc8>
+[17475.507468] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff8801a644b600>; dentry<ffff880089afdb40>=="abc";
+[17475.754596] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff8800b582f100>; dentry<ffff880089afdb40>=="abc";
+[17475.754609] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff8800b582f100>; dentry<ffff880089afdb40>=="abc"; buf<00007ffc26f0c420>; len==4096; pos<ffff88007fc73f50>==0;
+[17475.754614] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff88007fc73df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff88007fc73dc8>
+[17475.754624] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff8800b582f100>; dentry<ffff880089afdb40>=="abc";
+[17478.040535] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff88018996e800>; dentry<ffff880089afdb40>=="abc";
+[17478.040541] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620000>, file<ffff88018996e800>; dentry<ffff880089afdb40>=="abc"; buf<00007ffc26f09ad0>; len==4096; pos<ffff88007fc73f50>==0;
+[17478.040544] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620000>; iocb<ffff88007fc73df0>; dentry<ffff880089afdb40>=="abc"; iter<ffff88007fc73dc8>
+[17478.040548] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff88018996e800>; dentry<ffff880089afdb40>=="abc";
+[17478.710345] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620000>; file<ffff88007943a800>; dentry<ffff880089afdb40>=="abc";
+[17478.710395] [OFS DBG](tgid:20748) <ofs_dir_iops_lookup> iparent<ffff8800b8e24ed0>; dentry<ffff8801893f6000>==".goutputstream-CHMWWX"; flags==0x701;
+[17478.710406] [OFS DBG](tgid:20748) <ofs_dir_iops_create> iparent<ffff8800b8e24ed0>; newd<ffff8801893f6000>==".goutputstream-CHMWWX"; mode=0100664; excl=true;
+[17478.710412] [OFS DBG](tgid:20748) <ofs_new_inode> sb<ffff880213706000>; iparent<ffff8800b8e24ed0>; mode=0100664; dev=0;
+[17478.710418] [OFS DBG](tgid:20748) <ofs_sops_alloc_inode> sb<ffff880213706000>; newoi<ffff88009c620278>->inode<ffff88009c620278>;
+[17478.710449] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620278>; file<ffff88007943ab00>; dentry<ffff8801893f6000>==".goutputstream-CHMWWX";
+[17478.710502] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620000>; file<ffff88007943a800>; dentry<ffff880089afdb40>=="abc";
+[17478.738102] [OFS DBG](tgid:20748) <ofs_regfile_fops_write> oi<ffff88009c620278>, file<ffff88007943ab00>; dentry<ffff8801893f6000>==".goutputstream-CHMWWX"; buf<000000000173c128>; len==5; pos<ffff88007fcf3f50>==0;
+[17478.738116] [OFS DBG](tgid:20748) <ofs_regfile_fops_write_iter> oi<ffff88009c620278>; iocb<ffff88007fcf3df0>; dentry<ffff8801893f6000>=".goutputstream-CHMWWX"; iter<ffff88007fcf3dc8>
+[17478.738606] [OFS DBG](tgid:20748) <ofs_dir_iops_rename2> ioldparent<ffff8800b8e24ed0>; dold<ffff8801893f6000>==".goutputstream-CHMWWX"; dold->d_inode<ffff88009c620278>;inewparent<ffff8800b8e24ed0>; newd<ffff880089afdb40>=="abc"; newd->d_inode<ffff88009c620000>
+[17478.738638] [OFS DBG](tgid:20748) <ofs_sops_drop_inode> inode<ffff88009c620000>;
+[17478.738678] [OFS DBG](tgid:20748) <ofs_sops_destroy_inode> inode<ffff88009c620000>;
+[17478.738745] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620278>; file<ffff88007943ab00>; dentry<ffff8801893f6000>=="abc";
+[17478.740715] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620278>; file<ffff88007943a200>; dentry<ffff8801893f6000>=="abc";
+[17478.740730] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620278>, file<ffff88007943a200>; dentry<ffff8801893f6000>=="abc"; buf<00007f6c5563d980>; len==4096; pos<ffff88007fcf3f50>==0;
+[17478.740735] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620278>; iocb<ffff88007fcf3df0>; dentry<ffff8801893f6000>=="abc"; iter<ffff88007fcf3dc8>
+[17478.740747] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620278>; file<ffff88007943a200>; dentry<ffff8801893f6000>=="abc";
+[17478.748577] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620278>; file<ffff88018dfc7100>; dentry<ffff8801893f6000>=="abc";
+[17478.748594] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620278>, file<ffff88018dfc7100>; dentry<ffff8801893f6000>=="abc"; buf<00007ffc26f0b710>; len==4096; pos<ffff88007fc73f50>==0;
+[17478.748600] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620278>; iocb<ffff88007fc73df0>; dentry<ffff8801893f6000>=="abc"; iter<ffff88007fc73dc8>
+[17478.748614] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620278>; file<ffff88018dfc7100>; dentry<ffff8801893f6000>=="abc";
+[17478.758196] [OFS DBG](tgid:20748) <ofs_regfile_fops_open> oi<ffff88009c620278>; file<ffff8800b9224e00>; dentry<ffff8801893f6000>=="abc";
+[17478.758209] [OFS DBG](tgid:20748) <ofs_regfile_fops_read> oi<ffff88009c620278>, file<ffff8800b9224e00>; dentry<ffff8801893f6000>=="abc"; buf<00007ffc26f0b6d0>; len==4096; pos<ffff88007fc73f50>==0;
+[17478.758215] [OFS DBG](tgid:20748) <ofs_regfile_fops_read_iter> oi<ffff88009c620278>; iocb<ffff88007fc73df0>; dentry<ffff8801893f6000>=="abc"; iter<ffff88007fc73dc8>
+[17478.758224] [OFS DBG](tgid:20748) <ofs_regfile_fops_release> oi<ffff88009c620278>; file<ffff8800b9224e00>; dentry<ffff8801893f6000>=="abc";
+[17478.759442] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff88009c620000>;
+[17486.537274] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018c67e100>; dentry<ffff88009c950300>=="dir2";
+[17486.537350] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018c67e100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17486.537372] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018c67e100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17486.537414] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018c67e100>; dentry<ffff88009c950300>=="dir2";
+[17486.537738] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018c67e300>; dentry<ffff88009c950300>=="dir2";
+[17486.537789] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018c67e300>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17486.537806] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018c67e300>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17486.537838] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018c67e300>; dentry<ffff88009c950300>=="dir2";
+[17486.543250] [OFS DBG](tgid:20807) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018c67f100>; dentry<ffff88009c950300>=="dir2";
+[17486.543316] [OFS DBG](tgid:20807) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018c67f100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fd5ff18>;
+[17486.543330] [OFS DBG](tgid:20807) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018c67f100>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fd5ff18>;
+[17486.543362] [OFS DBG](tgid:20807) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018c67f100>; dentry<ffff88009c950300>=="dir2";
+[17486.545325] [OFS DBG](tgid:20808) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800d7f77b00>; dentry<ffff88009c950300>=="dir2";
+[17486.545396] [OFS DBG](tgid:20808) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d7f77b00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc67f18>;
+[17486.545410] [OFS DBG](tgid:20808) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800d7f77b00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff88007fc67f18>;
+[17486.545440] [OFS DBG](tgid:20808) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800d7f77b00>; dentry<ffff88009c950300>=="dir2";
+[17486.960986] [OFS DBG](tgid:20809) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8801898ade00>; dentry<ffff8801e3dd6480>=="singularity";
+[17486.960995] [OFS DBG](tgid:20809) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801944a0840>
+[17486.961018] [OFS DBG](tgid:20809) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801898ade00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f80cd732000>; len==131072; pos<ffff88007fc67f50>==0;
+[17486.961024] [OFS DBG](tgid:20809) <ofs_singularity_ofsops_read> file<ffff8801898ade00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f80cd732000>; len==131072; pos<ffff88007fc67f50>==0;
+[17486.961029] [OFS DBG](tgid:20809) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc67d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc67d58>
+[17486.961033] [OFS DBG](tgid:20809) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc67d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc67d58>
+[17486.961083] [OFS DBG](tgid:20809) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801898ade00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f80cd732000>; len==131072; pos<ffff88007fc67f50>==10;
+[17486.961088] [OFS DBG](tgid:20809) <ofs_singularity_ofsops_read> file<ffff8801898ade00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f80cd732000>; len==131072; pos<ffff88007fc67f50>==10;
+[17486.961092] [OFS DBG](tgid:20809) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc67d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc67d58>
+[17486.961096] [OFS DBG](tgid:20809) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc67d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc67d58>
+[17486.961116] [OFS DBG](tgid:20809) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8801898ade00>; dentry<ffff8801e3dd6480>=="singularity";
+[17486.961120] [OFS DBG](tgid:20809) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801944a0840>
+[17491.318856] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018dfc7b00>; dentry<ffff88009c950300>=="dir2";
+[17491.318922] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018dfc7b00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17491.318943] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018dfc7b00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17491.318980] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018dfc7b00>; dentry<ffff88009c950300>=="dir2";
+[17491.319278] [OFS DBG](tgid:20296) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff88018dfc7300>; dentry<ffff88009c950300>=="dir2";
+[17491.319324] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018dfc7300>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17491.319339] [OFS DBG](tgid:20296) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff88018dfc7300>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190aeff18>;
+[17491.319367] [OFS DBG](tgid:20296) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff88018dfc7300>; dentry<ffff88009c950300>=="dir2";
+[17491.323752] [OFS DBG](tgid:20831) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2";
+[17491.323804] [OFS DBG](tgid:20831) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b77f18>;
+[17491.323817] [OFS DBG](tgid:20831) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b77f18>;
+[17491.323843] [OFS DBG](tgid:20831) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8800a0db0500>; dentry<ffff88009c950300>=="dir2";
+[17491.325396] [OFS DBG](tgid:20835) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801e9f49900>; dentry<ffff88009c950300>=="dir2";
+[17491.325444] [OFS DBG](tgid:20835) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e9f49900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880189b23f18>;
+[17491.325456] [OFS DBG](tgid:20835) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801e9f49900>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880189b23f18>;
+[17491.325479] [OFS DBG](tgid:20835) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801e9f49900>; dentry<ffff88009c950300>=="dir2";
+[17491.931516] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.931523] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff880188642cc0>
+[17491.946145] [OFS DBG](tgid:20836) <ofs_dir_iops_lookup> iparent<ffff8800b8e24000>; dentry<ffff8801944a03c0>==".hidden"; flags==0x101;
+[17491.946162] [OFS DBG](tgid:20836) <ofs_dops_delete_dentry> dentry<ffff8801944a03c0>
+[17491.946454] [OFS DBG](tgid:20836) <ofs_dir_iops_lookup> iparent<ffff8800b8e24278>; dentry<ffff88019374d6c0>==".hidden"; flags==0x101;
+[17491.946465] [OFS DBG](tgid:20836) <ofs_dops_delete_dentry> dentry<ffff88019374d6c0>
+[17491.950132] [OFS DBG](tgid:20836) <ofs_dir_fops_open> oi<ffff8800b8e244f0>; file<ffff8801a7a6ff00>; dentry<ffff88009c950300>=="dir2";
+[17491.981484] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800a0f0a200>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.981493] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801886420c0>
+[17491.981511] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800a0f0a200>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f1308d67980>; len==4096; pos<ffff88007fc57f50>==0;
+[17491.981518] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8800a0f0a200>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f1308d67980>; len==4096; pos<ffff88007fc57f50>==0;
+[17491.981524] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17491.981528] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17491.981538] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800a0f0a200>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.981542] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801886420c0>
+[17491.982046] [OFS DBG](tgid:20836) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7a6ff00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b77f18>;
+[17491.982062] [OFS DBG](tgid:20836) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7a6ff00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b77f18>;
+[17491.982371] [OFS DBG](tgid:20836) <ofs_dir_iops_lookup> iparent<ffff8800b8e244f0>; dentry<ffff8800b8f60000>==".hidden"; flags==0x101;
+[17491.982378] [OFS DBG](tgid:20836) <ofs_dops_delete_dentry> dentry<ffff8800b8f60000>
+[17491.982524] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff88018b454000>; dentry<ffff8801993fa6c0>=="sin";
+[17491.982534] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff88018b454000>; dentry<ffff8801993fa6c0>=="sin"; buf<00007f12f7ffd960>; len==4096; pos<ffff880190b77f50>==0;
+[17491.982539] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff88018b454000>; dentry<ffff8801993fa6c0>=="sin"; buf<00007f12f7ffd960>; len==4096; pos<ffff880190b77f50>==0;
+[17491.982543] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880190b77d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b77d58>
+[17491.982547] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff880190b77d80>; dentry<ffff8801993fa6c0>=="sin"; iter<ffff880190b77d58>
+[17491.982557] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff88018b454000>; dentry<ffff8801993fa6c0>=="sin";
+[17491.982650] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff88018b454600>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.982654] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff88007fbd8240>
+[17491.982658] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff88018b454600>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f12f7ffd960>; len==4096; pos<ffff880190b77f50>==0;
+[17491.982662] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff88018b454600>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007f12f7ffd960>; len==4096; pos<ffff880190b77f50>==0;
+[17491.982664] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff880190b77d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff880190b77d58>
+[17491.982667] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff880190b77d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff880190b77d58>
+[17491.982671] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff88018b454600>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.982673] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff88007fbd8240>
+[17491.982783] [OFS DBG](tgid:20836) <ofs_dir_fops_iterate> oi<ffff8800b8e244f0>; file<ffff8801a7a6ff00>; dentry<ffff88009c950300>=="dir2"; ctx<ffff880190b77f18>;
+[17491.983657] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity"; buf<0000000001a14278>; len==8192; pos<ffff88007fc57f50>==0;
+[17491.983665] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity"; buf<0000000001a14278>; len==8192; pos<ffff88007fc57f50>==0;
+[17491.983671] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17491.983674] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17491.986225] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity"; buf<0000000001a14278>; len==8192; pos<ffff88007fc57f50>==10;
+[17491.986232] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity"; buf<0000000001a14278>; len==8192; pos<ffff88007fc57f50>==10;
+[17491.986236] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17491.986240] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fc57d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fc57d58>
+[17491.986456] [OFS DBG](tgid:20836) <ofs_dir_fops_release> oi<ffff8800b8e244f0>; file<ffff8801a7a6ff00>; dentry<ffff88009c950300>=="dir2";
+[17491.987429] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800d8207c00>; dentry<ffff8801e3dd6480>=="singularity";
+[17491.987439] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<          (null)>
+[17492.009101] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8801f227b900>; dentry<ffff8801e3dd6480>=="singularity";
+[17492.009121] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff88007fbd8240>
+[17492.009130] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8801f227b900>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc5440>; len==4096; pos<ffff88007fea3f50>==0;
+[17492.009136] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8801f227b900>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc5440>; len==4096; pos<ffff88007fea3f50>==0;
+[17492.009140] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17492.009144] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17492.009152] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8801f227b900>; dentry<ffff8801e3dd6480>=="singularity";
+[17492.009155] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff88007fbd8240>
+[17492.196960] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800840e7800>; dentry<ffff8801e3dd6480>=="singularity";
+[17492.196968] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801ead93a80>
+[17492.196979] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800840e7800>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc61e0>; len==4096; pos<ffff88007fea3f50>==0;
+[17492.196985] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8800840e7800>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc61e0>; len==4096; pos<ffff88007fea3f50>==0;
+[17492.196990] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17492.196995] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17492.197008] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800840e7800>; dentry<ffff8801e3dd6480>=="singularity";
+[17492.197012] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801ead93a80>
+[17495.349545] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800b9303b00>; dentry<ffff8801e3dd6480>=="singularity";
+[17495.349549] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801ea9b93c0>
+[17495.349554] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800b9303b00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc45d0>; len==4096; pos<ffff88007fea3f50>==0;
+[17495.349557] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8800b9303b00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc45d0>; len==4096; pos<ffff88007fea3f50>==0;
+[17495.349558] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17495.349560] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17495.349566] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800b9303b00>; dentry<ffff8801e3dd6480>=="singularity";
+[17495.349567] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801ea9b93c0>
+[17495.350287] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> oi<ffff8800b8e24ed0>; file<ffff8800b9303c00>; dentry<ffff8801e3dd6480>=="singularity";
+[17495.350289] [OFS DBG](tgid:20836) <ofs_singularity_fops_open> entry: magic dentry, cursor<ffff8801ea9b93c0>
+[17495.350293] [OFS DBG](tgid:20836) <ofs_singularity_fops_read> oi<ffff8800b8e24ed0>, file<ffff8800b9303c00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc4590>; len==4096; pos<ffff88007fea3f50>==0;
+[17495.350295] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read> file<ffff8800b9303c00>; dentry<ffff8801e3dd6480>=="singularity"; buf<00007ffc45bc4590>; len==4096; pos<ffff88007fea3f50>==0;
+[17495.350297] [OFS DBG](tgid:20836) <ofs_singularity_fops_read_iter> oi<ffff8800b8e24ed0>; iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17495.350299] [OFS DBG](tgid:20836) <ofs_singularity_ofsops_read_iter> iocb<ffff88007fea3d80>; dentry<ffff8801e3dd6480>=="singularity"; iter<ffff88007fea3d58>
+[17495.350302] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> oi<ffff8800b8e24ed0>; file<ffff8800b9303c00>; dentry<ffff8801e3dd6480>=="singularity";
+[17495.350303] [OFS DBG](tgid:20836) <ofs_singularity_fops_release> entry: magic dentry, cursor<ffff8801ea9b93c0>
+[17511.429094] [OFS DBG](tgid:20965) <ofs_sops_statfs> dentry<ffff8801e9020840>; buf<ffff8800752cbee0>;
+[17515.407880] [OFS DBG](tgid:20988) <ofs_dir_iops_unlink> iparent<ffff8800b8e24278>; dentry<ffff880077d26600>=="sym2"; dentry->d_inode<ffff8800b8e24c58>
+[17515.407888] [OFS DBG](tgid:20988) <ofs_sops_drop_inode> inode<ffff8800b8e24c58>;
+[17515.407895] [OFS DBG](tgid:20988) <ofs_sops_destroy_inode> inode<ffff8800b8e24c58>;
+[17515.407898] [OFS DBG](tgid:20988) <ofs_dops_delete_dentry> dentry<ffff880077d26600>
+[17515.407902] [OFS ERR](tgid:20988) <ofs_rm_singularity_hlp> The singularity has other hard link.
+[17515.407906] [OFS_TEST ERR] <ofs_test_exit> Failed in ofs_unlink() errno:-16
+[17515.407909] [OFS DBG](tgid:20988) <ofs_unregister> root<ffff880076b52b00>;
+[17515.428581] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e24c58>;
+[17515.428611] [OFS DBG](tgid:20988) <ofs_kill_sb> sb<ffff880213706000>;
+[17515.428624] [OFS DBG](tgid:20988) <ofs_sops_drop_inode> inode<ffff8800b8e24768>;
+[17515.428648] [OFS DBG](tgid:20988) <ofs_sops_destroy_inode> inode<ffff8800b8e24768>;
+[17515.428655] [OFS DBG](tgid:20988) <ofs_sops_drop_inode> inode<ffff8800b8e253c0>;
+[17515.428658] [OFS DBG](tgid:20988) <ofs_sops_destroy_inode> inode<ffff8800b8e253c0>;
+[17515.428661] [OFS DBG](tgid:20988) <ofs_sops_drop_inode> inode<ffff88009c620278>;
+[17515.428665] [OFS DBG](tgid:20988) <ofs_sops_destroy_inode> inode<ffff88009c620278>;
+[17515.428667] [OFS DBG](tgid:20988) <ofs_sops_drop_inode> inode<ffff8800b8e25148>;
+[17515.428669] [OFS DBG](tgid:20988) <ofs_sops_destroy_inode> inode<ffff8800b8e25148>;
+[17515.428672] [OFS DBG](tgid:20988) <ofs_sops_drop_inode> inode<ffff8800b8e249e0>;
+[17515.428675] [OFS DBG](tgid:20988) <ofs_sops_destroy_inode> inode<ffff8800b8e249e0>;
+[17515.428679] BUG: Dentry ffff880188642cc0{i=0,n=.}  still in use (1) [unmount of ofs ofs]
+[17515.428681] ------------[ cut here ]------------
+[17515.428688] WARNING: CPU: 3 PID: 20988 at /build/buildd/linux-3.19.0/fs/dcache.c:1289 umount_check+0x7c/0x90()
+[17515.428689] Modules linked in: ofstest(OE-) ofs(OE) binfmt_misc rfcomm bnep nls_iso8859_1 mmc_block rtsx_usb_ms memstick hid_sensor_gyro_3d hid_sensor_accel_3d hid_sensor_als hid_sensor_magn_3d hid_sensor_rotation hid_sensor_incl_3d hid_sensor_trigger industrialio_triggered_buffer kfifo_buf msi_wmi snd_hda_codec_hdmi industrialio joydev hid_sensor_iio_common snd_hda_codec_realtek ses sparse_keymap snd_hda_codec_generic enclosure arc4 intel_rapl iosf_mbi snd_hda_intel x86_pkg_temp_thermal intel_powerclamp coretemp iwldvm kvm_intel snd_hda_controller snd_hda_codec mac80211 snd_hwdep kvm iwlwifi crct10dif_pclmul snd_pcm crc32_pclmul ghash_clmulni_intel cfg80211 aesni_intel aes_x86_64 lrw gf128mul glue_helper ablk_helper cryptd snd_seq_midi snd_seq_midi_event snd_rawmidi serio_raw btusb snd_seq hid_sensor_hub
+[17515.428736]  lpc_ich bluetooth snd_seq_device snd_timer uvcvideo snd videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common hid_multitouch shpchp videodev soundcore hid_generic media mei_me mei i915 wmi drm_kms_helper video drm mac_hid i2c_algo_bit nfsd auth_rpcgss nfs_acl lockd grace parport_pc sunrpc ppdev lp parport autofs4 rtsx_usb_sdmmc rtsx_usb btrfs xor usbhid hid uas usb_storage raid6_pq ahci libahci r8169 mii osio(OE) exfat(OE) [last unloaded: ofs]
+[17515.428776] CPU: 3 PID: 20988 Comm: rmmod Tainted: G    B   W  OE  3.19.0-11-generic #11-Ubuntu
+[17515.428779] Hardware name: Micro-Star International Co., Ltd. Slidebook S20 0M/MS-1161, BIOS E1161IMS.50B 07/11/2013
+[17515.428782]  ffffffff81ab7cd8 ffff880193c47c88 ffffffff817c15b5 0000000000000007
+[17515.428786]  0000000000000000 ffff880193c47cc8 ffffffff8107595a ffff880193c47cf0
+[17515.428789]  ffff880188642cc0 ffff880188642d50 ffff880188642d18 ffff8801e3dd6520
+[17515.428793] Call Trace:
+[17515.428800]  [<ffffffff817c15b5>] dump_stack+0x45/0x57
+[17515.428805]  [<ffffffff8107595a>] warn_slowpath_common+0x8a/0xc0
+[17515.428808]  [<ffffffff81075a4a>] warn_slowpath_null+0x1a/0x20
+[17515.428813]  [<ffffffff8120aaac>] umount_check+0x7c/0x90
+[17515.428817]  [<ffffffff8120ab70>] ? prepend.constprop.28+0x30/0x30
+[17515.428821]  [<ffffffff8120b75d>] d_walk+0xdd/0x330
+[17515.428824]  [<ffffffff8120aa30>] ? dentry_free+0xb0/0xb0
+[17515.428829]  [<ffffffff8120beda>] do_one_tree+0x2a/0x50
+[17515.428832]  [<ffffffff8120d35f>] shrink_dcache_for_umount+0x2f/0x90
+[17515.428837]  [<ffffffff811f55b5>] generic_shutdown_super+0x25/0x100
+[17515.428841]  [<ffffffff811f5989>] kill_litter_super+0x29/0x40
+[17515.428847]  [<ffffffffc0bf404f>] ofs_kill_sb+0x4f/0x60 [ofs]
+[17515.428851]  [<ffffffff811f5d09>] deactivate_locked_super+0x49/0x60
+[17515.428854]  [<ffffffff811f615c>] deactivate_super+0x6c/0x80
+[17515.428858]  [<ffffffff81213f53>] cleanup_mnt+0x43/0xa0
+[17515.428862]  [<ffffffff812146ad>] mntput_no_expire+0x13d/0x150
+[17515.428866]  [<ffffffff812146e4>] mntput+0x24/0x40
+[17515.428869]  [<ffffffff81214927>] kern_unmount+0x37/0x40
+[17515.428875]  [<ffffffffc0bf52b8>] ofs_unregister+0x98/0x130 [ofs]
+[17515.428879]  [<ffffffffc07e104a>] ofs_test_exit+0x4a/0x1000 [ofstest]
+[17515.428884]  [<ffffffff810f7518>] SyS_delete_module+0x1d8/0x230
+[17515.428889]  [<ffffffff81014ff7>] ? do_notify_resume+0x97/0xb0
+[17515.428894]  [<ffffffff817c896f>] ? int_signal+0x12/0x17
+[17515.428898]  [<ffffffff817c86cd>] system_call_fastpath+0x16/0x1b
+[17515.428901] ---[ end trace aa377aa8b38f7b85 ]---
+[17515.428909] [OFS DBG](tgid:20988) <ofs_sops_put_super> sb<ffff880213706000>;
+[17515.428911] VFS: Busy inodes after unmount of ofs. Self-destruct in 5 seconds.  Have a nice day...
+[17515.440702] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e24768>;
+[17515.456644] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e253c0>;
+[17515.456656] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff88009c620278>;
+[17515.456661] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e25148>;
+[17515.456665] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e249e0>;
+[17526.365564] =============================================================================
+[17526.365570] BUG ofs_inode_cache (Tainted: G    B   W  OE ): Objects remaining in ofs_inode_cache on kmem_cache_close()
+[17526.365571] -----------------------------------------------------------------------------
+
+[17526.365575] INFO: Slab 0xffffea0002e38900 objects=25 used=4 fp=0xffff8800b8e27b40 flags=0x1ffff0000004080
+[17526.365579] CPU: 3 PID: 21032 Comm: rmmod Tainted: G    B   W  OE  3.19.0-11-generic #11-Ubuntu
+[17526.365580] Hardware name: Micro-Star International Co., Ltd. Slidebook S20 0M/MS-1161, BIOS E1161IMS.50B 07/11/2013
+[17526.365582]  ffff880036144600 ffff88007fe3bd88 ffffffff817c15b5 0000000000000007
+[17526.365585]  ffffea0002e38900 ffff88007fe3be68 ffffffff811d1f6f ffff880036144600
+[17526.365587]  0000000000000020 ffff88007fe3be78 ffff88007fe3be28 656a624f00000286
+[17526.365590] Call Trace:
+[17526.365595]  [<ffffffff817c15b5>] dump_stack+0x45/0x57
+[17526.365599]  [<ffffffff811d1f6f>] slab_err+0xaf/0xd0
+[17526.365605]  [<ffffffff810f3a44>] ? on_each_cpu_cond+0xb4/0xe0
+[17526.365608]  [<ffffffff811d36c0>] ? __flush_cpu_slab+0x50/0x50
+[17526.365611]  [<ffffffff811d79c2>] ? __kmem_cache_shutdown+0x112/0x2d0
+[17526.365614]  [<ffffffff811d79e2>] __kmem_cache_shutdown+0x132/0x2d0
+[17526.365619]  [<ffffffff813dbb12>] ? percpu_counter_destroy+0x62/0x80
+[17526.365623]  [<ffffffff8119c958>] kmem_cache_destroy+0x48/0x120
+[17526.365629]  [<ffffffffc0bfd612>] ofs_exit+0x4b/0xa39 [ofs]
+[17526.365634]  [<ffffffffc0bfd5c7>] ? ofs_debugfs_exit+0x17/0x17 [ofs]
+[17526.365638]  [<ffffffff810f7518>] SyS_delete_module+0x1d8/0x230
+[17526.365642]  [<ffffffff81014ff7>] ? do_notify_resume+0x97/0xb0
+[17526.365646]  [<ffffffff817c896f>] ? int_signal+0x12/0x17
+[17526.365649]  [<ffffffff817c86cd>] system_call_fastpath+0x16/0x1b
+[17526.365652] INFO: Object 0xffff8800b8e24000 @offset=0
+[17526.365653] INFO: Object 0xffff8800b8e24278 @offset=632
+[17526.365654] INFO: Object 0xffff8800b8e244f0 @offset=1264
+[17526.365655] INFO: Object 0xffff8800b8e24ed0 @offset=3792
+[17526.365658] kmem_cache_destroy ofs_inode_cache: Slab cache still has objects
+[17526.365660] CPU: 3 PID: 21032 Comm: rmmod Tainted: G    B   W  OE  3.19.0-11-generic #11-Ubuntu
+[17526.365661] Hardware name: Micro-Star International Co., Ltd. Slidebook S20 0M/MS-1161, BIOS E1161IMS.50B 07/11/2013
+[17526.365663]  fffffffffffffff5 ffff88007fe3bed8 ffffffff817c15b5 0000000000000007
+[17526.365665]  ffff880036144600 ffff88007fe3bef8 ffffffff8119ca2e ffffffffc0c03480
+[17526.365667]  fffffffffffffff5 ffff88007fe3bf18 ffffffffc0bfd612 ffffffffc0bfd5c7
+[17526.365669] Call Trace:
+[17526.365671]  [<ffffffff817c15b5>] dump_stack+0x45/0x57
+[17526.365674]  [<ffffffff8119ca2e>] kmem_cache_destroy+0x11e/0x120
+[17526.365679]  [<ffffffffc0bfd612>] ofs_exit+0x4b/0xa39 [ofs]
+[17526.365683]  [<ffffffffc0bfd5c7>] ? ofs_debugfs_exit+0x17/0x17 [ofs]
+[17526.365686]  [<ffffffff810f7518>] SyS_delete_module+0x1d8/0x230
+[17526.365689]  [<ffffffff81014ff7>] ? do_notify_resume+0x97/0xb0
+[17526.365693]  [<ffffffff817c896f>] ? int_signal+0x12/0x17
+[17526.365696]  [<ffffffff817c86cd>] system_call_fastpath+0x16/0x1b
+[17526.365698] [OFS INF](tgid:21032) <ofs_exit> unregister filesystem: ofs
