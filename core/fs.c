@@ -141,6 +141,7 @@ struct file_system_type ofs_fstype = {
 
 /******** ******** super ******** ********/
 struct kmem_cache *ofs_inode_cache;
+struct kmem_cache *ofs_file_cache;
 
 static const struct super_operations ofs_sops = {
 	.alloc_inode = ofs_sops_alloc_inode,
@@ -575,6 +576,14 @@ void ofs_inode_init_once(void *data)
 	oi->ofsops = NULL;
 	oi->symlink = OFS_NULL_OID;
 	inode_init_once(&oi->inode);
+}
+
+void ofs_file_init_once(void *data)
+{
+	struct ofs_file *of = (struct ofs_file *)data;
+
+	of->cursor = NULL;
+	of->priv = NULL;
 }
 
 static

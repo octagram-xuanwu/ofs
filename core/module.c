@@ -90,9 +90,7 @@ int ofs_init(void)
 	ofs_inode_cache = kmem_cache_create("ofs_inode_cache",
 					    sizeof(struct ofs_inode),
 					    0,
-					    (SLAB_RECLAIM_ACCOUNT |
-					     SLAB_MEM_SPREAD |
-					     SLAB_PANIC),
+					    SLAB_PANIC,
 					    ofs_inode_init_once);
 	if (IS_ERR_OR_NULL(ofs_inode_cache)) {
 		rc = -ENOMEM;
@@ -100,10 +98,21 @@ int ofs_init(void)
 		goto out_return;
 	}
 
+	ofs_file_cache = kmem_cache_create("ofs_file_cache",
+					   sizeof(struct ofs_file),
+					   0,
+					   SLAB_PANIC,
+					   ofs_file_init_once);
+	if (IS_ERR_OR_NULL(ofs_file_cache)) {
+		rc = -ENOMEM;
+		ofs_err("Can't create ofs_file_cache.\n");
+		goto out_inode_cache_destory;
+	}
+
 	rc = bdi_init(&ofs_backing_dev_info);
 	if (rc) {
 		ofs_err("Could not init bdi! errno:%d\n", rc);
-		goto out_cache_destroy;
+		goto out_file_cache_destroy;
 	}
 
 	if (hashtable_size_bits < OFS_HASHTABLE_SIZE_BITS_MIN)
@@ -163,7 +172,9 @@ out_kfree:
 	ofs_rbtrees = NULL;
 out_bdi_destroy:
 	bdi_destroy(&ofs_backing_dev_info);
-out_cache_destroy:
+out_file_cache_destroy:
+	kmem_cache_destroy(ofs_file_cache);
+out_inode_cache_destory:
 	kmem_cache_destroy(ofs_inode_cache);
 out_return:
 	return rc;
@@ -186,6 +197,7 @@ void ofs_exit(void)
 	kfree(ofs_rbtrees);
 	ofs_rbtrees = NULL;
 	bdi_destroy(&ofs_backing_dev_info);
+	kmem_cache_destroy(ofs_file_cache);
 	kmem_cache_destroy(ofs_inode_cache);
 	ofs_inf("unregister filesystem: %s\n", ofs_fstype.name);
 }

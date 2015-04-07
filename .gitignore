@@ -3,6 +3,8 @@
 *.mod.c
 modules.order
 Module.symvers
+ofs.symvers
+ofs_config.mk
 *.o
 .tmp_versions
 GTAGS

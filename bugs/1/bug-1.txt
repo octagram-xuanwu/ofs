@@ -1,4 +1,4 @@
-# BUG-#1
+# BUG-#1 Cursor Dentry "." Doesn't Free
 
 ## BUG描述
 gedit打开singularity后没有close，导致cursor dentry "." 没有被释放。
@@ -50,8 +50,19 @@ gedit打开singularity后没有close，导致cursor dentry "." 没有被释放�
 [17515.456661] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e25148>;
 [17515.456665] [OFS DBG](tgid:32) <ofs_destroy_inode_rcu_callback> inode<ffff8800b8e249e0>;
 
+## 分析
+多次打开文件会产生多个struct file *，并多次调用ofs_singularity_fops_open()函数。oi->cursor只有一个，形成了一对多的局面。后来的进程在ofs_singularity_fops_open()中覆盖oi->cursor的值，造成先前进程d_alloc的对象无法释放。
+
 ## 解决方法
-TODO
+重新设计一个结构体
+```c
+struct ofs_file {
+	struct dentry *cursor;
+	void *priv;
+};
+```
+在ofs_singularity_fops_open()中为每个进程单独alloc一个struct ofs_file，形成1对1的局面。
+当把singularity当成文件夹时，cursor表示"."。priv用于保存用户自定义的数据。
 
 ## 状态
-OPEN
+FIXED

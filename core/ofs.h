@@ -136,9 +136,13 @@ struct ofs_inode {
 	const struct ofs_operations *ofsops;	/**< ofs operations */
 	union {
 		void *priv;		/**< private data */
-		struct dentry *cursor;	/**< cursor when readdir */
 		oid_t symlink;		/**< target of magic symlink */
 	};
+};
+
+struct ofs_file {
+	struct dentry *cursor;
+	void *priv;
 };
 
 /**

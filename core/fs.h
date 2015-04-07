@@ -105,6 +105,9 @@ extern
 void ofs_inode_init_once(void *data);
 
 extern
+void ofs_file_init_once(void *data);
+
+extern
 int ofs_test_super(struct super_block *sb, void *magic);
 
 extern
@@ -153,6 +156,7 @@ extern const struct inode_operations ofs_symlink_iops;
 
 /******** ******** fs ******** ********/
 extern struct kmem_cache *ofs_inode_cache;
+extern struct kmem_cache *ofs_file_cache;
 extern struct backing_dev_info ofs_backing_dev_info;
 extern struct ofs_rbtree *ofs_rbtrees;
 extern struct file_system_type ofs_fstype;

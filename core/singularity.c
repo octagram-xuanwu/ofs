@@ -145,34 +145,50 @@ int ofs_singularity_fops_open(struct inode *inode, struct file *file)
 {
 	static struct qstr cursor_name = QSTR_INIT(".", 1);
 	struct ofs_inode *oi = OFS_INODE(inode);
+	struct ofs_file *of;
 	int rc;
 
 	ofs_dbg("oi<%p>; file<%p>; dentry<%p>==\"%pd\";\n",
 		oi, file, file->f_path.dentry, file->f_path.dentry);
-	if (oi->magic == file->f_path.dentry) {
-		oi->cursor = d_alloc(file->f_path.dentry, &cursor_name);
-		ofs_dbg("entry: magic dentry, cursor<%p>\n", oi->cursor);
-		rc = oi->cursor ? 0 : -ENOMEM;
-		if (rc)
-			return rc;
+	
+	of = kmem_cache_alloc(ofs_file_cache, GFP_KERNEL);
+	if (IS_ERR_OR_NULL(of)) {
+		rc = -ENOMEM;
+		goto out_return;
 	}
+	of->cursor = d_alloc(file->f_path.dentry, &cursor_name);
+	if (IS_ERR_OR_NULL(of->cursor)) {
+		rc = -ENOMEM;
+		goto out_cache_free;
+	}
+	ofs_dbg("entry: magic dentry, cursor<%p>\n", of->cursor);
+	file->private_data = of;
+
 	if (oi->ofsops) {
 		ofsops_get(oi->ofsops);
 		if (oi->ofsops->open) {
 			rc = oi->ofsops->open(oi, file);
 			if (rc) {
-				ofsops_put(oi->ofsops);
-				dput(oi->cursor);
-				oi->cursor = NULL;
+				goto out_ofsops_put;
 			}
 		}
 	}
+	return 0;
+
+out_ofsops_put:
+	ofsops_put(oi->ofsops);
+	dput(of->cursor);
+	of->cursor = NULL;
+out_cache_free:
+	kmem_cache_free(ofs_file_cache, of);
+out_return:
 	return rc;
 }
 
 int ofs_singularity_fops_release(struct inode *inode, struct file *file)
 {
 	struct ofs_inode *oi = OFS_INODE(inode);
+	struct ofs_file *of;
 
 	ofs_dbg("oi<%p>; file<%p>; dentry<%p>==\"%pd\";\n",
 		oi, file, file->f_path.dentry, file->f_path.dentry);
@@ -181,11 +197,13 @@ int ofs_singularity_fops_release(struct inode *inode, struct file *file)
 			oi->ofsops->release(oi, file);
 		ofsops_put(oi->ofsops);
 	}
-	if (oi->magic == file->f_path.dentry) {
-		ofs_dbg("entry: magic dentry, cursor<%p>\n", oi->cursor);
-		dput(oi->cursor);
-		oi->cursor = NULL;
-	}
+
+	of = (struct ofs_file *)file->private_data;
+	ofs_dbg("entry: magic dentry, cursor<%p>\n", of->cursor);
+	dput(of->cursor);
+	of->cursor = NULL;
+	kmem_cache_free(ofs_file_cache, of);
+
 	return 0;
 }
 
@@ -199,6 +217,7 @@ loff_t ofs_singularity_fops_llseek(struct file *file, loff_t offset, int whence)
 {
 	struct dentry *dentry = file->f_path.dentry;
 	struct ofs_inode *oi = OFS_INODE(dentry->d_inode);
+	struct ofs_file *of = file->private_data;
 	
 	ofs_dbg("oi<%p>; file<%p>; dentry<%p>==\"%pd\"; "
 		"offset==%lld; whence==%d;\n",
@@ -211,7 +230,7 @@ loff_t ofs_singularity_fops_llseek(struct file *file, loff_t offset, int whence)
 		return -ENOSYS;
 	}
 
-	ofs_dbg("entry: magic dentry\n");
+	ofs_dbg("entry: magic dentry<%p>\n", of->cursor);
 	mutex_lock(&oi->inode.i_mutex);
 	switch (whence) {
 		case 1:
@@ -227,7 +246,7 @@ loff_t ofs_singularity_fops_llseek(struct file *file, loff_t offset, int whence)
 		file->f_pos = offset;
 		if (file->f_pos >= 2) {
 			struct list_head *p;
-			struct dentry *cursor = oi->cursor;
+			struct dentry *cursor = of->cursor;
 			loff_t n = file->f_pos - 2;
 
 			spin_lock(&dentry->d_lock);
@@ -256,7 +275,8 @@ int ofs_singularity_fops_iterate(struct file *file, struct dir_context *ctx)
 {
 	struct dentry *dentry = file->f_path.dentry;
 	struct ofs_inode *oi = OFS_INODE(dentry->d_inode);
-	struct dentry *cursor = oi->cursor;
+	struct ofs_file *of = file->private_data;
+	struct dentry *cursor = of->cursor;
 	struct list_head *p, *q = &cursor->d_child;
 
 	ofs_dbg("oi<%p>; file<%p>; dentry<%p>==\"%pd\"; ctx<%p>;\n",
