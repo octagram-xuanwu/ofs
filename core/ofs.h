@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief C header for the ofs (octagram filesystem, outlandish filesystem, or
+ * @brief C header of the ofs (octagram filesystem, outlandish filesystem, or
  *        odd filesystem) kernel module
  * @author Octagram Sun <octagram@qq.com>
  * @version 0.1.0

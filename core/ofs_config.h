@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief C source for the ofs (octagram filesystem, outlandish filesystem, or
+ * @brief C header of the ofs (octagram filesystem, outlandish filesystem, or
  *        odd filesystem) kernel module
  * @author Octagram Sun <octagram@qq.com>
  * @version 0.1.0
@@ -8,7 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * All configure definations are here
+ * All configure definations are here.
  * @note
  * This file is part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n

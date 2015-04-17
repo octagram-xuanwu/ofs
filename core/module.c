@@ -8,9 +8,9 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * Source about kernel module of ofs
+ * C source about kernel module of ofs
  * @note
- * This file is part of ofs, as available from\n
+ * This file is a part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n
  * * https://github.com/octagram-xuanwu/ofs\n
  * @note

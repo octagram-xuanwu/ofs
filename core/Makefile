@@ -1,5 +1,5 @@
 ##
-# @brief C source for the ofs (octagram filesystem, outlandish filesystem, or
+# @brief Makefile for the ofs (octagram filesystem, outlandish filesystem, or
 #        odd filesystem) kernel module
 # @author Octagram Sun <octagram@qq.com>
 # @version 0.1.0
@@ -7,7 +7,7 @@
 # @copyright Octagram Sun <octagram@qq.com>
 #
 # @node
-# This file is part of ofs, as available from
+# This file is a part of ofs, as available from
 # * https://gitcafe.com/octagram/ofs
 # * https://github.com/octagram-xuanwu/ofs
 # This file is free software; you can redistribute it and/or modify it under

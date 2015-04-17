@@ -10,7 +10,7 @@
  * @note
  * Source about filesystem of ofs
  * @note
- * This file is part of ofs, as available from\n
+ * This file is a part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n
  * * https://github.com/octagram-xuanwu/ofs\n
  * @note
@@ -59,8 +59,14 @@
 /******** ******** ******** ******** ******** ******** ******** ********
  ******** ******** ********       macro       ******** ******** ********
  ******** ******** ******** ******** ******** ******** ******** ********/
-#define OFS_MAGIC_NUM       	0x706673	/**< ofs */
+/**
+ * @brief ofs magic
+ */
+#define OFS_MAGIC_NUM       	0x706673 /* ofs */
 
+/**
+ * @brief a batch of ofs inode number for per-cpu
+ */
 #define OFS_INO_BATCH 1024
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -188,7 +194,7 @@ static struct address_space_operations ofs_aops = {
  *        <b><em>struct @ref ofs_mount_opts</em></b>
  * @param mo: mount options structure
  * @param data: mount options string
- * @param remount: indicate whether is remount.
+ * @param remount: indicating whether it is remounting.
  * @retval 0: OK.
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
@@ -265,9 +271,8 @@ int ofs_parse_options(struct ofs_mount_opts *mo, char *data, bool remount)
 /**
  * @brief Initialize a super block that is newly allocated by <i>sget()</i>
  * @param sb: super block
- * @param magic: magic mount strings, maybe unused when normal mounting
+ * @param magic: Magic mount string, maybe unused when normal mounting.
  * @param mo: mount options
- * @return 0 if OK; errno if failed.
  * @retval 0: OK.
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
@@ -343,7 +348,7 @@ int ofs_fill_superblock(struct super_block *sb, char *magic,
 		sb, sb->s_fs_info, rooti, rootd);
 
 	/* When magic mounting, the root directory 
-	 * becomes a magic ofs inode.
+	 * becomes a magic directory.
 	 */
 	if (mo->is_magic) {
 		spin_lock(&newroot->rootoi->inode.i_lock);
@@ -362,6 +367,13 @@ out_return:
 	return rc;
 }
 
+/**
+ * @brief Test whether super block is existent.
+ * @param sb: super block to test.
+ * @param magic: test key.
+ * @retval 1: existent
+ * @retval 0: not existent
+ */
 int ofs_test_super(struct super_block *sb, void *magic)
 {
 	if (magic == NULL) /* If magic is NULL, the mount is normal. */
@@ -373,6 +385,15 @@ int ofs_test_super(struct super_block *sb, void *magic)
 	return 0;
 }
 
+/**
+ * @brief Used to initialize a new super block in <b><em>sget()</em></b>
+ * @param sb: super block to test.
+ * @param data: data.
+ * @retval 0: OK.
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_set_super(struct super_block *sb, void *data)
 {
 	sb->s_fs_info = NULL;	/* mark a new super block */
@@ -384,25 +405,22 @@ int ofs_set_super(struct super_block *sb, void *data)
  * @param fst: filesystem type
  * @param flags: mount flags
  * @param dev_name: When magic user mounting, <b<em>>dev_name</em></b> is 
- *                  the magic string to identify the magic mount;
- *                  Unused in other mount mode.
+ *                  the magic string to identify the magic mount.
+ *                  It is unused in other mount mode.
  * @param data: When kernel mounting, <b><em>data</em></b> is the magic string.
- *              In other mount mode, <b><em>data</em></b> is the options
- *              (Passed by "-o option" of <b><i>mount</b></i> cmd).
- * @return The root directory dentry of the filesystem if successed;
- *         errno if failed.
- * @retval dentry: pointer (<b><em>struct dentry *</em></b>) to the
- *                 root directory of the filesystem.
+ *              In other mounting mode, <b><em>data</em></b> is the options
+ *              (Passed by "-o option" of <b><i>mount</i></b> cmd).
+ * @retval dentry: The root directory dentry of the filesystem if successed.
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
  * @note
- * There are 3 mount mode:
- * * magic user mount mode: Caused by cmd
+ * There are 3 mounting mode:
+ * * magic user mounting mode: Caused by cmd
  *   "mount -t ofs -o magic magic_string mountpoint"
- * * normal user mount mode: a normal filesystem.
- * * kernel mount mode: internal mount in kernel. Caused by
- *   @ref ofs_register()
+ * * normal user mounting mode: a normal filesystem.
+ * * kernel mounting mode: internal mount in kernel. Caused by
+ *   @ref ofs_register().
  * @sa ofs_register()
  */
 static
@@ -468,11 +486,11 @@ struct dentry *ofs_mount(struct file_system_type *fst, int flags,
 }
 
 /**
- * @brief kill super_block
+ * @brief Kill super block
  * @param sb: super block
  * @note
  * * When sb->s_active == 0, this function will be called.
- *   @ref ofs_sops_put_super() will be called in kill_litter_super.
+ * * @ref ofs_sops_put_super() will be called in kill_litter_super.
  */
 static
 void ofs_kill_sb(struct super_block *sb)
@@ -505,12 +523,11 @@ static ino_t get_next_ofs_ino(void)
 }
 
 /**
- * @brief ofs alloc a new inode
+ * @brief Alloc a new ofs inode
  * @param sb: super block
  * @param iparent: parent inode
  * @param mode: mode
  * @param dev: device number
- * @return new inode or errno
  * @retval pointer: the new inode
  * @retval NULL: can't alloc a new inode
  */
@@ -565,6 +582,11 @@ struct inode *ofs_new_inode(struct super_block *sb, const struct inode *iparent,
 	return newi;
 }
 
+/**
+ * @brief Used by kmem_cache_alloc(ofs_inode_cache, ...) to initialize the new
+ *        ofs_inode
+ * @param data: address of the new ofs_inode
+ */
 void ofs_inode_init_once(void *data)
 {
 	struct ofs_inode *oi = (struct ofs_inode *)data;
@@ -578,6 +600,11 @@ void ofs_inode_init_once(void *data)
 	inode_init_once(&oi->inode);
 }
 
+/**
+ * @brief Used by kmem_cache_alloc(ofs_file_cache, ...) to initialize the new
+ *        ofs_file
+ * @param data: address of the new ofs_file
+ */
 void ofs_file_init_once(void *data)
 {
 	struct ofs_file *of = (struct ofs_file *)data;
@@ -586,6 +613,12 @@ void ofs_file_init_once(void *data)
 	of->priv = NULL;
 }
 
+/**
+ * @brief super operation to alloc a new ofs inode
+ * @param sb: super block
+ * @return new inode
+ * @retval NULL: failed
+ */
 static
 struct inode *ofs_sops_alloc_inode(struct super_block *sb)
 {
@@ -599,6 +632,13 @@ struct inode *ofs_sops_alloc_inode(struct super_block *sb)
 		return NULL;
 }
 
+/**
+ * @brief rcu-callback to free a ofs inode
+ * @param head: rcu head
+ * @note
+ * * This callback is called by @ref ofs_sops_destroy_inode() after a
+ *   rcu grace period.
+ */
 static
 void ofs_destroy_inode_rcu_callback(struct rcu_head *head)
 {
@@ -609,6 +649,10 @@ void ofs_destroy_inode_rcu_callback(struct rcu_head *head)
 	kmem_cache_free(ofs_inode_cache, OFS_INODE(inode));
 }
 
+/**
+ * @brief super operation to destroy ofs inode
+ * @param inode: inode to destory
+ */
 static
 void ofs_sops_destroy_inode(struct inode *inode)
 {
@@ -617,7 +661,7 @@ void ofs_sops_destroy_inode(struct inode *inode)
 }
 
 /**
- * @brief Tell the caller whether to delete the inode.
+ * @brief super operation to tell the caller whether to delete the inode.
  * @param inode: The inode need to drop
  * @retval 1: delete it
  * @retval 0: don't delete it
@@ -650,7 +694,7 @@ int ofs_sops_drop_inode(struct inode *inode)
 }
 
 /**
- * @brief put super_block
+ * @brief super operation to put super_block
  * @param sb: super block
  * @note
  * * This function will be called by kill_litter_super() after all inode iput()
@@ -670,6 +714,12 @@ void ofs_sops_put_super(struct super_block *sb)
 	}
 }
 
+/**
+ * @brief super operation to remount a filesystem
+ * @param sb: super block
+ * @param flags: mount flags
+ * @param data: mount options
+ */
 static
 int ofs_sops_remount_fs(struct super_block *sb, int *flags, char *data)
 {
@@ -681,6 +731,13 @@ int ofs_sops_remount_fs(struct super_block *sb, int *flags, char *data)
 	return err;
 }
 
+/**
+ * @brief super operation to get the status of a filesystem
+ * @param sb: super block
+ * @note
+ * * This function will be called by kill_litter_super() after all inode iput()
+ *   in fsnotify_unmount_inodes(). So, kfree() root here.
+ */
 static
 int ofs_sops_statfs(struct dentry *dentry, struct kstatfs *buf)
 {
@@ -688,6 +745,12 @@ int ofs_sops_statfs(struct dentry *dentry, struct kstatfs *buf)
 	return simple_statfs(dentry, buf);
 }
 
+/**
+ * @brief super operation to show mount options
+ * @param seq: seq file to cache the output
+ * @param rootd: root dentry of filesystem
+ * @retval 0: OK.
+ */
 static
 int ofs_sops_show_options(struct seq_file *seq, struct dentry *rootd)
 {
@@ -707,12 +770,12 @@ int ofs_sops_show_options(struct seq_file *seq, struct dentry *rootd)
 /******** ******** dentry_operations ******** ********/
 
 /**
- * @brief Tell the caller whether to delete the dentry.
+ * @brief dentry operation to tell the caller whether to delete the dentry.
  * @param dentry: dentry to be deleted
  * @retval 1: delete it.
  * @retval 0: don't delete it.
  * @note
- * * Kernel need this function return 1 to kill dentry. See <em>dput()</em> in
+ * * VFS need this function return 1 to kill dentry. See <em>dput()</em> in
  *   <b><i>fs/dcache.c</em></b> for detail.
  */
 static

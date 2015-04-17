@@ -10,7 +10,7 @@
  * @note
  * C header about filesystem of ofs
  * @note
- * This file is part of ofs, as available from\n
+ * This file is a part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n
  * * https://github.com/octagram-xuanwu/ofs\n
  * @note
@@ -55,18 +55,26 @@
  ******** ******** ******** ******** ******** ******** ******** ********/
 /******** ******** hash rbtree ******** ********/
 /**
- * @brief The max hashtable size is (1 << OFS_HASHTABLE_SIZE_BITS_MAX).
+ * @brief Max hashtable size (1 << OFS_HASHTABLE_SIZE_BITS_MAX)
  */
 #define OFS_HASHTABLE_SIZE_BITS_MAX	16
 
 /**
- * @brief The min hashtable size is (1 << OFS_HASHTABLE_SIZE_BITS_MIN).
+ * @brief Min hashtable size (1 << OFS_HASHTABLE_SIZE_BITS_MIN)
  */
 #define OFS_HASHTABLE_SIZE_BITS_MIN	L1_CACHE_SHIFT
 
+/**
+ * @brief Get the ofs operations.
+ * @param ofsops: ofs operations
+ */
 #define ofsops_get(ofsops) \
 	(((ofsops) && try_module_get((ofsops)->owner) ? (ofsops) : NULL))
 
+/**
+ * @brief Pet the ofs operations.
+ * @param ofsops: ofs operations
+ */
 #define ofsops_put(ofsops) \
 	do { if (ofsops) module_put((ofsops)->owner); } while(0)
 

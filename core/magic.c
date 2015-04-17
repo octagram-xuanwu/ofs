@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief C source for the ofs (octagram filesystem, outlandish filesystem, or
+ * @brief C source of the ofs (octagram filesystem, outlandish filesystem, or
  *        odd filesystem) kernel module
  * @author Octagram Sun <octagram@qq.com>
  * @version 0.1.0
@@ -8,9 +8,9 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * Source about magic apis
+ * C source about magic apis
  * @note
- * This file is part of ofs, as available from\n
+ * This file is a part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n
  * * https://github.com/octagram-xuanwu/ofs\n
  * @note
@@ -2068,6 +2068,25 @@ int ofs_may_delete_singularity(struct inode *ip, struct inode *itgt,
 	return 0;
 }
 
+/**
+ * @brief ofs magic api: helper function to remove a singularity
+ * @param oitgt: target singularity
+ * @param pathtgt: path of target
+ * @param oip: parent ofs_inode of target
+ * @param pathp: parent path
+ * @retval 0: OK
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ * @note
+ * * If there are other dentrys (hard links) of the singularity,
+ *   can't remove it.
+ * * Can't rm a singularity when it has child.
+ * * Support security_hooks.
+ * * Support fsnotify.
+ * @sa ofs_rm_singularity()
+ * @sa ofs_rm_magic()
+ */
 static
 int ofs_rm_singularity_hlp(struct ofs_inode *oitgt, struct path *pathtgt,
 			   struct ofs_inode *oip, struct path *pathp)
@@ -2192,20 +2211,14 @@ out_return:
 }
 
 /**
- * @brief ofs magic api: remove a magic ofs inode
+ * @brief ofs magic api: remove a singularity
  * @param root: magic ofs that has been registered
  * @param target: ofs inode descriptor to remove.
  * @retval 0: OK
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
- * @note
- * * If there are other dentrys (hard links) of the magic file,
- *   can't rm the magic file.
- * * Can't rm a singularity when it has child.
- * * Support security_hooks.
- * * Support fsnotify.
- * @remark
+ * @sa ofs_rm_singularity_hlp()
  */
 int ofs_rm_singularity(struct ofs_root *root, oid_t target)
 {

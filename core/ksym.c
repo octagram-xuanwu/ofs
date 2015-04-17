@@ -8,9 +8,9 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * Source to load address of kernel symbols
+ * C source to load address of kernel symbols
  * @note
- * This file is part of ofs, as available from\n
+ * This file is a part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n
  * * https://github.com/octagram-xuanwu/ofs\n
  * @note

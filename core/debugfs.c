@@ -8,9 +8,9 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * This source is debugfs interface to the ofs.
+ * This C source is debugfs interface to the ofs.
  * @note
- * This file is part of ofs, as available from\n
+ * This file is a part of ofs, as available from\n
  * * https://gitcafe.com/octagram/ofs\n
  * * https://github.com/octagram-xuanwu/ofs\n
  * @note
@@ -290,14 +290,12 @@ int call_ofs_rename_magic(struct ofs_api *api, const struct api_args *args)
 static
 int ofsdebug_tree_open(struct inode *inode, struct file *file)
 {
-	mutex_lock(&inode->i_mutex);
 	return 0;
 }
 
 static
 int ofsdebug_tree_release(struct inode *inode, struct file *file)
 {
-	mutex_unlock(&inode->i_mutex);
 	return 0;
 }
 
