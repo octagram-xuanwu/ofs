@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * Source about directory
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C source about directory. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -216,6 +207,11 @@ int ofs_dir_iops_mknod(struct inode *iparent, struct dentry *newd,
 	return ret;
 }
 
+/**
+ * @brief Instantiate a dentry
+ * @param dentry: to be instantiated
+ * @param inode: inode of a singularity to attach to this dentry
+ */
 static inline
 void ofs_d_instantiate_singularity(struct dentry *dentry, struct inode *inode)
 {
@@ -553,10 +549,6 @@ int ofs_dir_iops_rename2(struct inode *ioldparent, struct dentry *dold,
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
- * @note
- * * TODO
- * @remark
- * * The function can't be used in ISR (Interrupt Service Routine).
  */
 int ofs_dir_iops_setattr(struct dentry *dentry, struct iattr *iattr)
 {
@@ -566,7 +558,7 @@ int ofs_dir_iops_setattr(struct dentry *dentry, struct iattr *iattr)
 
 /**
  * @brief ofs inode operation for directory: set attributes
- * @param mnt: TODO
+ * @param mnt: VFS mount instance
  * @param dentry: target
  * @param stat: the buffur to receive the attributes
  * @return error code
@@ -574,10 +566,6 @@ int ofs_dir_iops_setattr(struct dentry *dentry, struct iattr *iattr)
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
- * @note
- * * TODO
- * @remark
- * * The function can't be used in ISR (Interrupt Service Routine).
  */
 int ofs_dir_iops_getattr(struct vfsmount *mnt, struct dentry *dentry,
 			 struct kstat *stat)
@@ -589,20 +577,18 @@ int ofs_dir_iops_getattr(struct vfsmount *mnt, struct dentry *dentry,
 /******** file_operations ********/
 /**
  * @brief ofs file operation for directory: llseek
- * @param file: target directory that is opened.
+ * @param file: file struct of the opened directory
  * @param offset: position
- * @param whence: TODO
+ * @param whence: SEEK_SET, SEEK_CUR or SEEK_END (See man lseek for detail.)
  * @return the position
  * @retval >0: the position
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
  * @note
- * * The llseek callback is used to readdir. The position is the number of child
- *   dentry in the directory. The position is the relevant of the order that
- *   child dentries link in the list d_subdirs.
- * @remark
- * * The function can't be used in ISR (Interrupt Service Routine).
+ * * When llseek callback is used with readdir (iterate). The position is the
+ *   sequence number of child dentry in the directory. It is the relevant of
+ *   the order that child dentries linked in the list d_subdirs.
  */
 loff_t ofs_dir_fops_llseek(struct file *file, loff_t offset, int whence)
 {
@@ -616,7 +602,7 @@ loff_t ofs_dir_fops_llseek(struct file *file, loff_t offset, int whence)
 
 /**
  * @brief ofs file operation for directory: read
- * @param file: target directory that is opened.
+ * @param file: file struct of the opened directory
  * @param buf: user buf
  * @param len: buf length
  * @param pos: file position
@@ -625,10 +611,6 @@ loff_t ofs_dir_fops_llseek(struct file *file, loff_t offset, int whence)
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
- * @note
- * * VFS returns -EISDIR in do_last(). So this function can't be called.
- * @remark
- * * The function can't be used in ISR (Interrupt Service Routine).
  */
 ssize_t ofs_dir_fops_read(struct file *file, char __user *buf, size_t len,
 			  loff_t *pos)
@@ -644,7 +626,7 @@ ssize_t ofs_dir_fops_read(struct file *file, char __user *buf, size_t len,
 
 /**
  * @brief ofs file operation for directory: write
- * @param file: target directory that is opened.
+ * @param file: file struct of the opened directory
  * @param buf: user data that will write to the directory
  * @param len: data length
  * @param pos: file position
@@ -653,6 +635,8 @@ ssize_t ofs_dir_fops_read(struct file *file, char __user *buf, size_t len,
  * @retval errno: Indicate the error code
  *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
  *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ * @note
+ * * VFS returns -EISDIR in do_last(). So this function can't be called.
  */
 ssize_t ofs_dir_fops_write(struct file *file, const char __user *buf,
 			   size_t len, loff_t *pos)
@@ -661,14 +645,24 @@ ssize_t ofs_dir_fops_write(struct file *file, const char __user *buf,
 }
 
 /**
- * @brief ofs file operation for directory: read_iter
- * TODO
+ * @brief ofs file operation for directory: sync read
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
  */
-ssize_t ofs_dir_fops_read_iter(struct kiocb * iocb, struct iov_iter * iter)
+ssize_t ofs_dir_fops_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 {
 	return -EISDIR;
 }
 
+/**
+ * @brief ofs file operation for directory: readdir
+ * @param file: file struct of the opened directory
+ * @param ctx: directory context
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_dir_fops_iterate(struct file *file, struct dir_context *ctx)
 {
 	struct ofs_inode *oi = FILE_TO_OFS_INODE(file);
@@ -677,6 +671,15 @@ int ofs_dir_fops_iterate(struct file *file, struct dir_context *ctx)
 	return dcache_readdir(file, ctx);
 }
 
+/**
+ * @brief ofs file operation for directory: ioctl
+ * @param file: file struct of the opened directory
+ * @param cmd: ioctl command
+ * @param args: ioctl arguments
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 long ofs_dir_fops_unlocked_ioctl(struct file *file, unsigned int cmd,
 				 unsigned long args)
 {
@@ -687,11 +690,27 @@ long ofs_dir_fops_unlocked_ioctl(struct file *file, unsigned int cmd,
 	return -EISDIR;
 }
 
+/**
+ * @brief ofs file operation for directory: mmap
+ * @param file: file struct of the opened directory
+ * @param vma: virtual memory
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_dir_fops_mmap(struct file *file, struct vm_area_struct *vma)
 {
 	return -EISDIR;
 }
 
+/**
+ * @brief ofs file operation for directory: open
+ * @param inode: inode of directory
+ * @param file: file struct of the opened directory
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_dir_fops_open(struct inode *inode, struct file *file)
 {
 	struct ofs_inode *oi = OFS_INODE(inode);
@@ -701,6 +720,14 @@ int ofs_dir_fops_open(struct inode *inode, struct file *file)
 	return dcache_dir_open(inode, file);
 }
 
+/**
+ * @brief ofs file operation for directory: close
+ * @param inode: inode of directory
+ * @param file: file struct of the opened directory
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_dir_fops_release(struct inode *inode, struct file *file)
 {
 	struct ofs_inode *oi = OFS_INODE(inode);
@@ -710,6 +737,13 @@ int ofs_dir_fops_release(struct inode *inode, struct file *file)
 	return dcache_dir_close(inode, file);
 }
 
+/**
+ * @brief ofs file operation for directory: fsync
+ * @param file: file struct of the opened directory
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_dir_fops_fsync(struct file *file, loff_t start, loff_t end, int dsync)
 {
 	return noop_fsync(file, start, end, dsync);

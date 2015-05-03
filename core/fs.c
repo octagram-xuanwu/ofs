@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * Source about filesystem of ofs
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C source about filesystem of ofs. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -50,6 +41,7 @@
 #include <asm/uaccess.h>
 
 #include "fs.h"
+#include "rbtree.h"
 #include "log.h"
 
 #ifdef CONFIG_OFS_SYSFS
@@ -592,7 +584,7 @@ void ofs_inode_init_once(void *data)
 	struct ofs_inode *oi = (struct ofs_inode *)data;
 
 	/* Don't need lock when constructing. */
-	oi->rbnode = (struct rb_node){0, NULL, NULL};
+	rbtree_init_node(&oi->rbnode);
 	oi->magic = NULL;
 	oi->state = 0;
 	oi->ofsops = NULL;

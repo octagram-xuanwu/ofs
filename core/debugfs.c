@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * This C source is debugfs interface to the ofs.
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * Debugfs interface to the ofs. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -48,6 +39,11 @@
 		dbg->__api_##api.dbg = dbg;				\
 		dbg->__api_##api.call = __call;				\
 		mutex_init(&dbg->__api_##api.mtx);			\
+	} while (0)
+
+#define OFSAPI_DESTROY(dbg, api)					\
+	do {								\
+		mutex_destroy(&dbg->__api_##api.mtx);			\
 	} while (0)
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -490,8 +486,7 @@ int ofsdebug_construct(struct ofs_root *root)
 #ifdef CONFIG_DEBUG_FS
 	struct ofs_dbg *dbg;
 
-	dbg = (struct ofs_dbg *)kmalloc(sizeof(struct ofs_dbg),
-						GFP_KERNEL);
+	dbg = (struct ofs_dbg *)kmalloc(sizeof(struct ofs_dbg), GFP_KERNEL);
 	if (IS_ERR_OR_NULL(dbg))
 		return -ENOMEM;
 	dbg->this = debugfs_create_dir(root->magic, ofs_debugfs_entry);
@@ -535,7 +530,18 @@ out_kfree:
 void ofsdebug_destruct(struct ofs_root *root)
 {
 #ifdef CONFIG_DEBUG_FS
-	debugfs_remove_recursive(root->dbg->this);
+	struct ofs_dbg *dbg = root->dbg;
+
+	OFSAPI_DESTROY(dbg, ofs_mkdir_magic);
+	OFSAPI_DESTROY(dbg, ofs_symlink_magic);
+	OFSAPI_DESTROY(dbg, ofs_create_magic);
+	OFSAPI_DESTROY(dbg, ofs_rmdir_magic);
+	OFSAPI_DESTROY(dbg, ofs_unlink_magic);
+	OFSAPI_DESTROY(dbg, ofs_rm_singularity);
+	OFSAPI_DESTROY(dbg, ofs_rm_magic);
+	OFSAPI_DESTROY(dbg, ofs_rename_magic);
+
+	debugfs_remove_recursive(dbg->this);
 	root->dbg = NULL;
 	kfree(root->dbg);
 #endif

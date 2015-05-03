@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * This source is sysfs interface to the ofs.
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * This source is sysfs interface to the ofs. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -300,8 +291,8 @@ void omsys_unregister(struct ofs_root *root)
 /******** ******** /sys/fs/ofs/state ******** ********/
 static
 ssize_t ofs_attr_state_show(struct kobject *kobj,
-				struct kobj_attribute *attr,
-				char *buf)
+			    struct kobj_attribute *attr,
+			    char *buf)
 {
 	return 0;
 }

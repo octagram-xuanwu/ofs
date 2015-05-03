@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * C source about kernel module of ofs
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C source about kernel module of ofs. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -128,7 +119,7 @@ int ofs_init(void)
 		goto out_bdi_destroy;
 	}
 	for (rc = 0; rc < size; rc++) {
-		ofs_rbtrees[rc].root = RB_ROOT;
+		rbtree_init(&ofs_rbtrees[rc].tree);
 		rwlock_init(&ofs_rbtrees[rc].lock);
 	}
 

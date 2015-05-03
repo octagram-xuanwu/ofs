@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * C source about singularity
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C source about singularity. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -48,7 +39,6 @@
 /******** ******** singularity operations ******** ********/
 /******** default ofs_operations ********/
 const struct ofs_operations ofs_singularity_ofsops = {
-	.owner = THIS_MODULE,
 	.read = ofs_singularity_ofsops_read,
 	.write = ofs_singularity_ofsops_write,
 	.read_iter = ofs_singularity_ofsops_read_iter,
@@ -74,7 +64,6 @@ const struct inode_operations ofs_singularity_iops = {
 
 /******** file_operations ********/
 const struct file_operations ofs_singularity_fops = {
-	.owner = THIS_MODULE,
 	.llseek = ofs_singularity_fops_llseek,
 	.read = ofs_singularity_fops_read,
 	.write = ofs_singularity_fops_write,
@@ -93,6 +82,18 @@ const struct file_operations ofs_singularity_fops = {
  ******** ******** ******** ******** ******** ******** ******** ********/
 /******** ******** singularity operations ******** ********/
 /******** default ofs_operations ********/
+/**
+ * @brief ofs file operation for singularity: read
+ * @param file: file struct of the opened singularity
+ * @param buf: user buf
+ * @param len: buf length
+ * @param pos: file position
+ * @return real data size that read from the singularity
+ * @retval >0: size
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_ofsops_read(struct file *file, char __user *buf,
 				    size_t len, loff_t *pos)
 {
@@ -103,6 +104,12 @@ ssize_t ofs_singularity_ofsops_read(struct file *file, char __user *buf,
 	return new_sync_read(file, buf, len, pos);
 }
 
+/**
+ * @brief ofs file operation for singularity: sync read
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_ofsops_read_iter(struct kiocb *iocb,
 					 struct iov_iter *iter)
 {
@@ -112,6 +119,18 @@ ssize_t ofs_singularity_ofsops_read_iter(struct kiocb *iocb,
 	return generic_file_read_iter(iocb, iter);
 }
 
+/**
+ * @brief ofs file operation for singularity: write
+ * @param file: file struct of the opened singularity
+ * @param buf: user data that will write to the singularity
+ * @param len: data length
+ * @param pos: file position
+ * @return real data size that wrote into the singularity
+ * @retval >0: size
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_ofsops_write(struct file *file, const char __user *buf,
 				     size_t len, loff_t *pos)
 {
@@ -122,6 +141,12 @@ ssize_t ofs_singularity_ofsops_write(struct file *file, const char __user *buf,
 	return new_sync_write(file, buf, len, pos);
 }
 
+/**
+ * @brief ofs file operation for singularity: sync write
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_ofsops_write_iter(struct kiocb *iocb,
 					  struct iov_iter *iter)
 {
@@ -131,6 +156,14 @@ ssize_t ofs_singularity_ofsops_write_iter(struct kiocb *iocb,
 	return generic_file_write_iter(iocb, iter);
 }
 
+/**
+ * @brief ofs file operation for singularity: mmap
+ * @param file: file struct of the opened singularity
+ * @param vma: virtual memory
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_singularity_ofsops_mmap(struct file *file, struct vm_area_struct *vma)
 {
 	ofs_dbg("file<%p>; dentry<%p>==\"%pd\"; vma<%p>;\n",
@@ -141,6 +174,14 @@ int ofs_singularity_ofsops_mmap(struct file *file, struct vm_area_struct *vma)
 /******** inode_operations ********/
 
 /******** file_operations ********/
+/**
+ * @brief ofs file operation for singularity: open
+ * @param inode: inode of singularity
+ * @param file: file struct of the opened singularity
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_singularity_fops_open(struct inode *inode, struct file *file)
 {
 	static struct qstr cursor_name = QSTR_INIT(".", 1);
@@ -185,6 +226,14 @@ out_return:
 	return rc;
 }
 
+/**
+ * @brief ofs file operation for singularity: close
+ * @param inode: inode of singularity
+ * @param file: file struct of the opened singularity
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_singularity_fops_release(struct inode *inode, struct file *file)
 {
 	struct ofs_inode *oi = OFS_INODE(inode);
@@ -207,12 +256,30 @@ int ofs_singularity_fops_release(struct inode *inode, struct file *file)
 	return 0;
 }
 
+/**
+ * @brief Get the inode type.
+ */
 static __always_inline
 unsigned char ofs_dt_type(struct inode *inode)
 {
 	return (inode->i_mode >> 12) & 15;
 }
 
+/**
+ * @brief ofs file operation for singularity: llseek
+ * @param file: file struct of the opened singularity
+ * @param offset: position
+ * @param whence: SEEK_SET, SEEK_CUR or SEEK_END (See man lseek for detail.)
+ * @return the position
+ * @retval >0: the position
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ * @note
+ * * When llseek callback is used with readdir (iterate). The position is the
+ *   sequence number of child dentry in the directory. It is the relevant of
+ *   the order that child dentries linked in the list d_subdirs.
+ */
 loff_t ofs_singularity_fops_llseek(struct file *file, loff_t offset, int whence)
 {
 	struct dentry *dentry = file->f_path.dentry;
@@ -271,6 +338,14 @@ loff_t ofs_singularity_fops_llseek(struct file *file, loff_t offset, int whence)
 	return offset;
 }
 
+/**
+ * @brief ofs file operation for singularity: readdir
+ * @param file: file struct of the opened singularity
+ * @param ctx: directory context
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_singularity_fops_iterate(struct file *file, struct dir_context *ctx)
 {
 	struct dentry *dentry = file->f_path.dentry;
@@ -317,12 +392,27 @@ int ofs_singularity_fops_iterate(struct file *file, struct dir_context *ctx)
 	return 0;
 }
 
+/**
+ * @brief ofs file operation for singularity: fsync
+ * @param file: file struct of the opened singularity
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_singularity_fops_fsync(struct file *file, loff_t start, loff_t end,
 			       int dsync)
 {
 	return noop_fsync(file, start, end, dsync);
 }
 
+/**
+ * @brief ofs file operation for singularity: mmap
+ * @param file: file struct of the opened singularity
+ * @param vma: virtual memory
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 int ofs_singularity_fops_mmap(struct file *file, struct vm_area_struct *vma)
 {
 	struct ofs_inode *oi = FILE_TO_OFS_INODE(file);
@@ -334,6 +424,15 @@ int ofs_singularity_fops_mmap(struct file *file, struct vm_area_struct *vma)
 	return -ENOSYS;
 }
 
+/**
+ * @brief ofs file operation for singularity: ioctl
+ * @param file: file struct of the opened singularity
+ * @param cmd: ioctl command
+ * @param args: ioctl arguments
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 long ofs_singularity_fops_unlocked_ioctl(struct file *file, unsigned int cmd,
 					 unsigned long args)
 {
@@ -346,6 +445,18 @@ long ofs_singularity_fops_unlocked_ioctl(struct file *file, unsigned int cmd,
 	return -ENOSYS;
 }
 
+/**
+ * @brief ofs file operation for singularity: write
+ * @param file: file struct of the opened singularity
+ * @param buf: user data that will write to the singularity
+ * @param len: data length
+ * @param pos: file position
+ * @return real data size that wrote into the singularity
+ * @retval >0: size
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_fops_write(struct file *file, const char __user *buf,
 				   size_t len, loff_t *pos)
 {
@@ -360,6 +471,12 @@ ssize_t ofs_singularity_fops_write(struct file *file, const char __user *buf,
 	return -ENOSYS;
 }
 
+/**
+ * @brief ofs file operation for singularity: sync write
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_fops_write_iter(struct kiocb *iocb,
 					struct iov_iter *iter)
 {
@@ -373,6 +490,18 @@ ssize_t ofs_singularity_fops_write_iter(struct kiocb *iocb,
 	return -ENOSYS;
 }
 
+/**
+ * @brief ofs file operation for singularity: read
+ * @param file: file struct of the opened singularity
+ * @param buf: user buf
+ * @param len: buf length
+ * @param pos: file position
+ * @return real data size that read from the singularity
+ * @retval >0: size
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_fops_read(struct file *file, char __user *buf,
 				  size_t len, loff_t *pos)
 {
@@ -387,6 +516,12 @@ ssize_t ofs_singularity_fops_read(struct file *file, char __user *buf,
 	return -ENOSYS;
 }
 
+/**
+ * @brief ofs file operation for singularity: sync read
+ * @retval errno: Indicate the error code
+ *                (see <b><a href="/usr/include/asm-generic/errno-base.h">
+ *                 /usr/include/asm-generic/errno-base.h</a></b>).
+ */
 ssize_t ofs_singularity_fops_read_iter(struct kiocb *iocb,
 				       struct iov_iter *iter)
 {

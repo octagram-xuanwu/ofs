@@ -41,7 +41,6 @@
 #include <linux/pagemap.h>
 #include <linux/spinlock.h>
 #include <linux/seqlock.h>
-#include <linux/rbtree.h>
 #include <linux/slab.h>
 #include <linux/audit.h>
 #include <linux/fs_struct.h>
@@ -87,16 +86,17 @@
  ******** ******** ******** ******** ******** ******** ******** ********/
 /******** ******** red-black tree ******** ********/
 extern
-struct ofs_inode *ofs_rbtree_lookup(struct ofs_rbtree *tree, const oid_t oid);
+struct ofs_inode *ofs_rbtree_lookup(struct ofs_rbtree *ofstree,
+				    const oid_t oid);
 
 extern
 void ofs_rbtree_oiput(struct ofs_inode *oi);
 
 extern
-bool ofs_rbtree_insert(struct ofs_rbtree *tree, struct ofs_inode *newoi);
+bool ofs_rbtree_insert(struct ofs_rbtree *ofstree, struct ofs_inode *newoi);
 
 extern
-void ofs_rbtree_remove(struct ofs_rbtree *tree, struct ofs_inode *oi);
+void ofs_rbtree_remove(struct ofs_rbtree *ofstree, struct ofs_inode *oi);
 
 extern
 struct ofs_rbtree *ofs_get_rbtree(struct ofs_inode *oi);

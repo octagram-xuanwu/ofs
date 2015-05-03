@@ -44,7 +44,7 @@ KRN_BITS := $(shell TMP=`echo ${KRN_BITS}`; [ x$$TMP = x"" ] && \
 CONFIG_OFS := m
 MODULE_NAME := ofs
 obj-$(CONFIG_OFS) := $(MODULE_NAME).o
-$(MODULE_NAME)-objs := module.o fs.o magic.o normal.o dir.o regfile.o \
+$(MODULE_NAME)-objs := rbtree.o module.o fs.o magic.o normal.o dir.o regfile.o \
 		       symlink.o singularity.o ksym.o
 ifeq ($(CONFIG_OFS_SYSFS), y)
 $(MODULE_NAME)-objs += omsys.o

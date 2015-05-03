@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * C source about magic apis
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C source about magic apis. 1 tab == 8 spaces.
  */
 
 /******** ******** ******** ******** ******** ******** ******** ********
@@ -27,6 +18,7 @@
 #include "fs.h"
 #include "log.h"
 #include "ksym.h"
+#include "rbtree.h"
 #ifdef CONFIG_OFS_SYSFS
 #include "omsys.h"
 #endif
@@ -59,7 +51,7 @@ extern int hashtable_size_bits;
 /******** ******** red-black tree ******** ********/
 /**
  * @brief ofs red-black tree function: lookup
- * @param tree: red-black tree
+ * @param ofstree: red-black tree
  * @param target: ofs inode descriptor (key in red-black tree)
  * @return ofs inode
  * @retval NULL: nothing to found.
@@ -71,33 +63,33 @@ extern int hashtable_size_bits;
  *   all operation.
  * @sa ofs_oiput()
  */
-struct ofs_inode *ofs_rbtree_lookup(struct ofs_rbtree *tree, const oid_t target)
+struct ofs_inode *ofs_rbtree_lookup(struct ofs_rbtree *ofstree,
+				    const oid_t target)
 {
-	struct rb_node *n;
+	struct rbtree_node *n;
 	struct ofs_inode *oitgt;
 	oid_t d;
 	int ret;
 
-	read_lock(&tree->lock); /* Can be interrupted,
-				   but can't be called in ISR */
-	n = tree->root.rb_node;
+	read_lock(&ofstree->lock); /* Can't be called in ISR */
+	n = ofstree->tree.root;
 	while (n) {
-		oitgt = rb_entry(n, struct ofs_inode, rbnode);
+		oitgt = rbtree_entry(n, struct ofs_inode, rbnode);
 		d = ofs_get_oid(oitgt);
 		ret = ofs_compare_oid(target, d);
 		if (ret < 0) {
-			n = n->rb_left;
+			n = n->left;
 		} else if (ret > 0) {
-			n = n->rb_right;
+			n = n->right;
 		} else {
-			read_unlock(&tree->lock);
+			read_unlock(&ofstree->lock);
 			if (igrab(&oitgt->inode)) {
 				return oitgt;
 			}
 			return NULL;
 		}
 	}
-	read_unlock(&tree->lock);
+	read_unlock(&ofstree->lock);
 	return NULL;
 }
 
@@ -118,7 +110,7 @@ void ofs_rbtree_oiput(struct ofs_inode *oitgt)
 
 /**
  * @brief ofs red-black tree function: insert
- * @param tree: red-black tree
+ * @param ofstree: red-black tree
  * @param newoi: new ofs inode that will be inserted.
  * @retval true: OK
  * @retval false: Failed. There is a node that already has the inode number.
@@ -126,35 +118,38 @@ void ofs_rbtree_oiput(struct ofs_inode *oitgt)
  * * This is a helper function. It is unsafe. It supposes that the
  *   <b><em>tree</em></b> and <b><em>newoi</em></b> are exactly right.
  */
-bool ofs_rbtree_insert(struct ofs_rbtree *tree, struct ofs_inode *newoi)
+bool ofs_rbtree_insert(struct ofs_rbtree *ofstree, struct ofs_inode *newoi)
 {
-	struct rb_node **new, *parent = NULL;
+	struct rbtree_node **new;
+	ptr_t lpc;
 	oid_t d, newoid;
 	struct ofs_inode *oi;
 	int ret;
 
 	newoid = ofs_get_oid(newoi);
-	write_lock(&tree->lock);
-	new = &(tree->root.rb_node);
+	write_lock(&ofstree->lock);
+	new = &(ofstree->tree.root);
+	lpc = (ptr_t)new;
 	while (*new) {
 		oi = rb_entry(*new, struct ofs_inode, rbnode);
 		d = ofs_get_oid(oi);
 		ret = ofs_compare_oid(newoid, d);
-		parent = *new;
 		if (ret < 0) {
-			new = &((*new)->rb_left);
+			new = &((*new)->left);
+			lpc = (ptr_t)new;
 		} else if (ret > 0) {
-			new = &((*new)->rb_right);
+			new = &((*new)->right);
+			lpc = (ptr_t)new | RBTREE_RIGHT;
 		} else {
-			write_unlock(&tree->lock);
+			write_unlock(&ofstree->lock);
 			BUG();	/* inode number is unique */
 			return false;
 		}
 	}
 
-	rb_link_node(&newoi->rbnode, parent, new);
-	rb_insert_color(&newoi->rbnode, &tree->root);
-	write_unlock(&tree->lock);
+	rbtree_lpc(&newoi->rbnode, lpc);
+	rbtree_insert_color(&ofstree->tree, &newoi->rbnode);
+	write_unlock(&ofstree->lock);
 
 	return true;
 }
@@ -168,11 +163,11 @@ bool ofs_rbtree_insert(struct ofs_rbtree *tree, struct ofs_inode *newoi)
      It supposes that the <b><em>tree</em></b>
  *   and <b><em>oitgt</em></b> are exactly right.
  */
-void ofs_rbtree_remove(struct ofs_rbtree *tree, struct ofs_inode *oitgt)
+void ofs_rbtree_remove(struct ofs_rbtree *ofstree, struct ofs_inode *oitgt)
 {
-	write_lock(&tree->lock);
-	rb_erase(&oitgt->rbnode, &tree->root);
-	write_unlock(&tree->lock);
+	write_lock(&ofstree->lock);
+	rbtree_rm(&ofstree->tree, &oitgt->rbnode);
+	write_unlock(&ofstree->lock);
 }
 
 /**

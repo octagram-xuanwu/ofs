@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * C header of all apis
- * @note
- * This file is part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C header of all apis. 1 tab == 8 spaces.
  */
 
 #ifndef __OFS_H__
@@ -41,7 +32,7 @@
 #include <linux/limits.h>
 #include <linux/spinlock.h>
 #include <linux/rwsem.h>
-#include <linux/rbtree.h>
+#include "rbtree.h"
 
 /******** ******** ******** ******** ******** ******** ******** ********
  ******** ******** ********      macros       ******** ******** ********
@@ -99,11 +90,14 @@ struct ofs_mount_opts {
 			  */
 };
 
+struct rbtree;
+struct rbtree_node;
+
 /**
  * @brief red-black tree
  */
 struct ofs_rbtree {
-	struct rb_root root;	/**< root of rbtree */
+	struct rbtree tree;	/**< rbtree */
 	rwlock_t lock;		/**< read-write spinlock */
 };
 
@@ -123,7 +117,7 @@ typedef struct ofs_id oid_t;
  */
 struct ofs_inode {
 	struct inode inode;		/**< inode */
-	struct rb_node rbnode;		/**< link in the red-black tree */
+	struct rbtree_node rbnode;	/**< link in the red-black tree */
 	struct dentry *magic;		/**< The unique dentry who owns
 					 *   the magic name
 					 *   Protected by inode.i_lock.

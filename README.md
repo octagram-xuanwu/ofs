@@ -1,6 +1,13 @@
 # ofs
 
 =================
+ * https://gitcafe.com/octagram/ofs
+ * https://github.com/octagram-xuanwu/ofs
+
+ * Ofs is free software; you can redistribute it and/or modify it under
+   the terms of the GNU General Public License (GPL) as published by the Free
+   Software Foundation, in version 2. The ofs is distributed in the hope
+   that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
 
 ## 简介
 

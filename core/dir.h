@@ -8,16 +8,7 @@
  * @copyright Octagram Sun <octagram@qq.com>
  *
  * @note
- * C header about directory, is used in ofs internal.
- * @note
- * This file is a part of ofs, as available from\n
- * * https://gitcafe.com/octagram/ofs\n
- * * https://github.com/octagram-xuanwu/ofs\n
- * @note
- * This file is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License (GPL) as published by the Free
- * Software Foundation, in version 2. The ofs is distributed in the hope
- * that it will be useful, but <b>WITHOUT ANY WARRANTY</b> of any kind.
+ * C header about directory, is used in ofs internal. 1 tab == 8 spaces.
  */
 
 #ifndef __OFS_DIR_H__
@@ -91,11 +82,11 @@ extern
 loff_t ofs_dir_fops_llseek(struct file *file, loff_t offset, int whence);
 
 extern
-ssize_t ofs_dir_fops_read(struct file *file, char __user * buf, size_t len,
+ssize_t ofs_dir_fops_read(struct file *file, char __user *buf, size_t len,
 			  loff_t *pos);
 
 extern
-ssize_t ofs_dir_fops_write(struct file *file, const char __user * buf,
+ssize_t ofs_dir_fops_write(struct file *file, const char __user *buf,
 			   size_t len, loff_t *pos);
 
 extern
