@@ -30,7 +30,7 @@
 	do {								\
 		__ksym__##sym =						\
 			(typeof(sym) *)kallsyms_lookup_name(#sym);	\
-		if (IS_ERR_OR_NULL(__ksym__##sym))	{		\
+		if (IS_ERR_OR_NULL(__ksym__##sym)) {			\
 			ofs_dbg("Can't load ksym:\""#sym"\"\n");	\
 			return PTR_ERR(__ksym__##sym);			\
 		}							\

@@ -2155,7 +2155,7 @@ retry_deleg:
 	}
 	BUG_ON(d_mountpoint(dtgt));
 
-	rc = __ksym__security_inode_unlink(ip, dtgt);
+	rc = CALL_KSYM(security_inode_unlink, ip, dtgt);
 	if (rc) {
 		ofs_dbg("Failed to security_inode_unlink_ksym()! (errno:%d)\n",
 			rc);
